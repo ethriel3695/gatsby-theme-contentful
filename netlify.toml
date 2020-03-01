@@ -1,4 +1,4 @@
 [build]
-  base=""
+  base="one-thousand-eyes"
   command = "npm i && gatsby build"
   publish = "one-thousand-eyes/public"
