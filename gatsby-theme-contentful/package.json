@@ -5,17 +5,15 @@
     "type": "git",
     "url": "https://github.com/ethriel3695/gatsby-theme-contentful.git"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
-    "@auth0/auth0-spa-js": "^1.6.3",
     "gatsby": "^2.19.12",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "@auth0/auth0-spa-js": "^1.6.3",
     "eslint": "^6.8.0",
     "gatsby": "^2.19.12",
     "prettier": "^1.19.1",

@@ -17,7 +17,7 @@ module.exports = ({
       greeting: `test`,
       copyright: `This is to insert a copyright message`,
       loginDesc: 'Login / Signup',
-      isAuthApp: true,
+      isAuthApp: false,
       newsletterTitle: '',
       social: {
         facebook: 'altcampus',
