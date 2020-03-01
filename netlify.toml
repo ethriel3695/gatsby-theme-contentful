@@ -1,4 +1,4 @@
 [build]
-  base = "demo"
-  command = "node ./create-env.js && npm i && npm audit fix && gatsby build"
-  publish = "demo/public"
+  base = "one-thousand-eyes"
+  command = "npm i && npm audit fix && gatsby build"
+  publish = "one-thousand-eyes/public"
