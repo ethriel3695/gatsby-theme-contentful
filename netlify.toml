@@ -1,4 +1,4 @@
 [build]
   base = "one-thousand-eyes"
-  command = "npm i && npm audit fix && gatsby build"
+  command = "yarn && yarn run build"
   publish = "one-thousand-eyes/public"
