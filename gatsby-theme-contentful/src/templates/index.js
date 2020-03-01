@@ -5,13 +5,18 @@ import HomeNoAuth from '../components/HomeNoAuth';
 import { Auth0Provider } from '../react-auth0-spa';
 import history from '../utils/history';
 
-const onRedirectCallback = appState => {
-  history.push(
-    appState && appState.targetUrl
-      ? appState.targetUrl
-      : window.location.pathname,
-  );
-};
+let onRedirectCallback = null;
+const isBrowser = typeof window !== 'undefined';
+
+if (isBrowser) {
+  onRedirectCallback = appState => {
+    history.push(
+      appState && appState.targetUrl
+        ? appState.targetUrl
+        : window.location.pathname,
+    );
+  };
+}
 
 export default function PageTemplate({
   pageContext,
@@ -24,7 +29,7 @@ export default function PageTemplate({
     <Auth0Provider
       domain={process.env.GATSBY_AUTH0_DOMAIN}
       client_id={process.env.GATSBY_AUTH0_CLIENT_ID}
-      redirect_uri={window.location.origin}
+      redirect_uri={isBrowser ? window.location.origin : ''}
       onRedirectCallback={onRedirectCallback}
     >
       {pageContext.isAuthApp ? (
@@ -36,6 +41,7 @@ export default function PageTemplate({
           socialLinks={pageContext.socialLinks}
           brand={pageContext.brand}
           hero={pageContext.hero}
+          newsletter={pageContext.newsletter}
           loginOption={pageContext.loginOption}
           isAuthApp={pageContext.isAuthApp}
           posts={posts}
@@ -50,6 +56,7 @@ export default function PageTemplate({
           socialLinks={pageContext.socialLinks}
           brand={pageContext.brand}
           hero={pageContext.hero}
+          newsletter={pageContext.newsletter}
           loginOption={pageContext.loginOption}
           isAuthApp={pageContext.isAuthApp}
           posts={posts}

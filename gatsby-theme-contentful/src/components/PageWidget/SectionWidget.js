@@ -9,14 +9,26 @@ export const SectionWidget = ({ sections }) => {
       {sections.map(section => (
         <div key={`session-${section.slug}`}>
           <h2>{section.title}</h2>
-          <div style={{ textAlign: 'left', fontSize: '20px' }}>
+          <div
+            style={{
+              fontSize: '17px',
+              fontFamily: 'Roboto, Helvetica Arial sans-serif',
+              fontWeight: 400,
+              lineHeight: 1.75,
+              letterSpacing: '0.00938em',
+            }}
+          >
             {documentToReactComponents(section.description.json)}
           </div>
           {section.item.map((sec, index) => (
             <Button
               key={`${sec.title}-${index}`}
               variant="contained"
-              style={{ backgroundColor: '#040DAF', marginRight: '5px' }}
+              style={{
+                backgroundColor: '#040DAF',
+                marginRight: '5px',
+                marginBottom: '5px',
+              }}
             >
               {sec.link ? (
                 <a

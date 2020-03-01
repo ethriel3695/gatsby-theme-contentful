@@ -115,6 +115,13 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         extension
         publicURL
       }
+      newsletter: file(
+        relativePath: { regex: "/(pdf)/" }
+        relativeDirectory: { eq: "newsletter" }
+      ) {
+        extension
+        publicURL
+      }
     }
   `);
 
@@ -128,6 +135,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     site: { siteMetadata },
     brandLogo,
     hero,
+    newsletter,
   } = result.data;
   const posts = result.data.allMdx.nodes;
 
@@ -184,6 +192,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         socialLinks,
         brand,
         hero,
+        newsletter,
         isAuthApp,
         slug,
         showBanner,

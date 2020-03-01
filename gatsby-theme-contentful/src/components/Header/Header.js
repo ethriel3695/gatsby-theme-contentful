@@ -45,6 +45,7 @@ const Header = props => {
   const isAuthenticated = props.isAuthenticated;
   const loginWithRedirect = props.loginWithRedirect;
   const logout = props.logout;
+  const newsletter = props ? props.newsletter : null;
   // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   function handleMenu(event) {
@@ -63,13 +64,7 @@ const Header = props => {
     }
   }
 
-  const {
-    loginDesc,
-    title,
-    isAuthApp,
-    newsletterTitle,
-    newsletterURL,
-  } = useSiteMetadata();
+  const { loginDesc, title, isAuthApp, newsletterTitle } = useSiteMetadata();
   const data = useBrandData();
   let brandLogo = false;
   if (data) {
@@ -118,17 +113,18 @@ const Header = props => {
           <NavigationList />
         </SwipeDrawer>
       ) : null}
-      {newsletterTitle.length > 0 ? (
+      {newsletter ? (
         <React.Fragment>
           <a
-            href={`${newsletterURL}`}
+            href={`${newsletter.publicURL}`}
             className={classes.plainLink}
             style={{ paddingRight: '15px' }}
-            target={`_blank `}
+            target="_blank"
+            rel="noopener noreferer"
           >
-            <HeaderText
-              className={classes.grow}
-            >{`${newsletterTitle}`}</HeaderText>
+            <HeaderText className={classes.grow}>
+              {`${newsletterTitle}`}
+            </HeaderText>
           </a>
         </React.Fragment>
       ) : null}

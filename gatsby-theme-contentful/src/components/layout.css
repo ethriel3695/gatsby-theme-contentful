@@ -1,3 +1,7 @@
+html, body {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
 .appHeader {
     background: linear-gradient(to bottom, #663399 0%, #6F2DA8 35%, #7F40BF 68%, #9F70CF 100%);
     box-shadow: inset 0 1px 6px 0 #663399;

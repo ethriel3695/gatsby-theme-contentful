@@ -14,6 +14,7 @@ export default function HomeNoAuth({
   copyright,
   brand,
   hero,
+  newsletter,
   loginOption,
   isAuthApp,
   slugs,
@@ -77,6 +78,7 @@ export default function HomeNoAuth({
       siteTitle={siteTitle}
       brand={brand}
       hero={hero}
+      newsletter={newsletter}
       copyright={copyright}
       loginOption={loginOption}
       isAuthApp={isAuthApp}

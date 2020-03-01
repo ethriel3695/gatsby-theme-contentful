@@ -19,7 +19,6 @@ module.exports = ({
       loginDesc: 'Login / Signup',
       isAuthApp: true,
       newsletterTitle: '',
-      newsletterURL: '',
       social: {
         facebook: 'altcampus',
         twitter: 'altcampus',

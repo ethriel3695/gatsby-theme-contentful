@@ -19,7 +19,6 @@ No part of this website may be reproduced without the specific written permissio
     loginDesc: 'Login',
     isAuthApp: false,
     newsletterTitle: 'Newsletter',
-    newsletterURL: '../../../assets/files/Argus.pdf',
     social: {
       facebook: 'https://www.facebook.com/barony1000eyes',
       twitter: '',

@@ -13,7 +13,6 @@ export const useSiteMetadata = () => {
           loginDesc
           isAuthApp
           newsletterTitle
-          newsletterURL
         }
       }
     }
