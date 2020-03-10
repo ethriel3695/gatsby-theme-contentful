@@ -25,15 +25,15 @@ const officers = [
     position: 'Deputy Archery Marshal',
   },
   {
-    email: 'baron.marshal@baronyof1000eyes.org',
+    email: 'baron@baronyof1000eyes.org',
     position: 'Baron',
   },
   {
-    email: 'baroness.marshal@baronyof1000eyes.org',
+    email: 'baroness@baronyof1000eyes.org',
     position: 'Baroness',
   },
   {
-    email: 'Chatelaine.marshal@baronyof1000eyes.org',
+    email: 'chatelaine@baronyof1000eyes.org',
     position: 'Chatelaine',
   },
   {
@@ -41,7 +41,7 @@ const officers = [
     position: 'Chronicler',
   },
   {
-    email: 'Exchequer@baronyof1000eyes.org',
+    email: 'exchequer@baronyof1000eyes.org',
     position: 'Exchequer',
   },
   {
