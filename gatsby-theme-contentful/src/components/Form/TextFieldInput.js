@@ -15,7 +15,7 @@ const TextFieldInput = props => {
   return (
     <TextField
       {...props}
-      color="inherit"
+      color="primary"
       aria-haspopup="true"
       margin="normal"
       variant="outlined"

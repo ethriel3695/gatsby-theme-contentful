@@ -2,20 +2,22 @@ import React, { useEffect } from 'react';
 import { Route } from 'react-dom';
 import { useAuth0 } from '../../react-auth0-spa';
 
+const isBrowser = typeof window !== 'undefined';
+
 const PrivateRoute = ({ component: Component, path, ...rest }) => {
-  const { loading, isAuthenticated, loginWithRedirect } = useAuth0();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   useEffect(() => {
-    if (loading || isAuthenticated) {
+    if (isAuthenticated) {
       return;
     }
     const fn = async () => {
       await loginWithRedirect({
-        appState: { targetUrl: path },
+        appState: { targetUrl: isBrowser ? window.location.pathname : path },
       });
     };
     fn();
-  }, [loading, isAuthenticated, loginWithRedirect, path]);
+  }, [isAuthenticated, loginWithRedirect, path]);
 
   const render = props =>
     isAuthenticated === true ? <Component {...props} /> : null;

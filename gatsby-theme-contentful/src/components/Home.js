@@ -1,39 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Img from 'gatsby-image';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import PostGrid from './Grid/PostGrid';
-// import { isAuthenticated } from '../utils/Auth';
-import Layout from './layout';
-import SEO from './seo';
-
 import { useAuth0 } from '../react-auth0-spa';
 
 export default function Home({
   siteTitle,
   siteDescription,
   siteGreeting,
-  copyright,
-  brand,
   hero,
-  loginOption,
-  isAuthApp,
   posts,
-  slugs,
 }) {
-  const { loading, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
-  useEffect(() => {
-    if (loading || isAuthenticated) {
-      return;
-    }
-    const fn = async () => {
-      await loginWithRedirect({});
-    };
-    fn();
-  }, [loading, isAuthenticated, loginWithRedirect]);
   let pageDetails = null;
-  const requiresAuth = false;
   if (hero) {
     pageDetails = (
       <Grid container>
@@ -85,20 +66,7 @@ export default function Home({
     );
   }
   return (
-    <Layout
-      siteTitle={siteTitle}
-      brand={brand}
-      hero={hero}
-      copyright={copyright}
-      loginOption={loginOption}
-      isAuthApp={isAuthApp}
-      slugs={slugs}
-      isAuthenticated={isAuthenticated}
-      loginWithRedirect={loginWithRedirect}
-      logout={logout}
-      requiresAuth={requiresAuth}
-    >
-      <SEO title="Home" />
+    <div>
       {isAuthenticated ? (
         <div
           style={{
@@ -125,6 +93,6 @@ export default function Home({
       ) : (
         <div>{pageDetails}</div>
       )}
-    </Layout>
+    </div>
   );
 }
