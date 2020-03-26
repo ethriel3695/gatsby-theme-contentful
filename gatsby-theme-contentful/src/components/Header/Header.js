@@ -14,8 +14,6 @@ import NavigationList from '../Menu/NavigationList';
 import { useSiteMetadata } from '../../hooks/siteMetadata';
 import { useBrandData } from '../../hooks/brandData';
 
-// import { useAuth0 } from '../../react-auth0-spa';
-
 const useStyles = makeStyles({
   grow: {
     flexGrow: 1,
@@ -38,15 +36,15 @@ const useStyles = makeStyles({
   },
 });
 
-const Header = props => {
+const Header = ({
+  isAuthenticated = false,
+  loginWithRedirect = false,
+  logout = false,
+  newsletter = undefined,
+}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [left, setLeft] = useState(false);
   const open = Boolean(anchorEl);
-  const isAuthenticated = props.isAuthenticated;
-  const loginWithRedirect = props.loginWithRedirect;
-  const logout = props.logout;
-  const newsletter = props ? props.newsletter : null;
-  // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
@@ -120,7 +118,7 @@ const Header = props => {
             className={classes.plainLink}
             style={{ paddingRight: '15px' }}
             target="_blank"
-            rel="noopener noreferer"
+            rel="noopener noreferrer"
           >
             <HeaderText className={classes.grow}>
               {`${newsletterTitle}`}

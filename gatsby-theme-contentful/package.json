@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/ethriel3695/gatsby-theme-contentful.git"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -21,6 +21,7 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.6.4",
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^14.0.1",
     "@emotion/core": "^10.0.22",
@@ -34,6 +35,7 @@
     "@theme-ui/prism": "^0.2.50",
     "@theme-ui/typography": "^0.2.46",
     "auth0-js": "^9.11.3",
+    "axios": "^0.19.2",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-emotion": "^4.1.16",
     "gatsby-plugin-feed": "^2.3.23",
@@ -49,7 +51,7 @@
     "gatsby-remark-images": "^3.1.35",
     "gatsby-remark-numbered-footnotes": "^1.0.1",
     "gatsby-remark-smartypants": "^2.1.17",
-    "gatsby-source-contentful": "^2.1.77",
+    "gatsby-source-contentful": "^2.2.4",
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-transformer-json": "^2.2.20",
     "gatsby-transformer-remark": "^2.6.39",

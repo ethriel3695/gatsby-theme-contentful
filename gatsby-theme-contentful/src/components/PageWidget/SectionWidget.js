@@ -18,7 +18,19 @@ export const SectionWidget = ({ sections }) => {
               letterSpacing: '0.00938em',
             }}
           >
-            {documentToReactComponents(section.description.json)}
+            {documentToReactComponents(
+              section.description.json,
+              // , {
+              // renderNode: {
+              //   [BLOCKS.EMBEDDED_ASSET]: (node, children) => (
+              //     <img
+              //       src={`${node.data.target.fields.file['en-US'].url}?w=300`}
+              //       src={node.data.target.fields.title['en-US']}
+              //     />
+              //   ),
+              // },
+              // }
+            )}
           </div>
           {section.item.map((sec, index) => (
             <Button

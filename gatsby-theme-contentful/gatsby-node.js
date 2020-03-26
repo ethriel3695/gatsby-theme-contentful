@@ -12,9 +12,7 @@ let assetPath;
 
 // These templates are simply data-fetching wrappers that import components
 const PageTemplate = require.resolve(`./src/templates/index`);
-// const ToolsTemplate = require.resolve(`./src/templates/tools`);
 const PostTemplate = require.resolve(`./src/templates/post`);
-// const TagTemplate = require.resolve(`./src/templates/Tags`);
 
 // Verify the data directory exists
 exports.onPreBootstrap = ({ store, reporter }, options) => {
@@ -125,6 +123,38 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     }
   `);
 
+  // Considering pulling in contentful data here to generate pages
+  // allContentfulPage {
+  //       nodes {
+  //         title
+  //         pageType
+  //         section {
+  //           id
+  //           order
+  //           slug
+  //           title
+  //           image {
+  //             description
+  //             fluid(maxWidth: 1904) {
+  //               src
+  //               srcSet
+  //               srcSetWebp
+  //               sizes
+  //             }
+  //           }
+  //           description {
+  //             json
+  //           }
+  //           item {
+  //             title
+  //             subHeader
+  //             link
+  //             slug
+  //           }
+  //         }
+  //       }
+  //     }
+
   if (result.errors) {
     reporter.panic('error loading nav', reporter.errors);
     return;
@@ -138,6 +168,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     newsletter,
   } = result.data;
   const posts = result.data.allMdx.nodes;
+  // const pages = result.data.allContentfulPage.nodes;
 
   const {
     title: siteTitle,
@@ -170,10 +201,12 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         loginOption,
         socialLinks,
         brand,
+        newsletter,
         isAuthApp,
         slug,
         showBanner,
         slugs,
+        // pages,
       },
     });
   });
@@ -197,7 +230,36 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         slug,
         showBanner,
         slugs,
+        // pages,
       },
     });
   });
+};
+
+// Account for Auth0 in the gatsby build process
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === 'build-html') {
+    /*
+     * During the build step, `auth0-js` will break because it relies on
+     * browser-specific APIs. Fortunately, we don’t need it during the build.
+     * Using Webpack’s null loader, we’re able to effectively ignore `auth0-js`
+     * during the build. (See `src/utils/auth.js` to see how we prevent this
+     * from breaking the app.)
+     */
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /auth0-js/,
+            use: loaders.null(),
+          },
+          {
+            test: /\.js$/,
+            include: path.dirname(require.resolve('gatsby-theme-contentful')),
+            use: [loaders.js()],
+          },
+        ],
+      },
+    });
+  }
 };

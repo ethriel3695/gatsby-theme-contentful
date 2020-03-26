@@ -1,34 +1,59 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Layout from '../components/layout';
-import Img from 'gatsby-image';
+import { Auth0Provider } from '../react-auth0-spa';
+import history from '../utils/history';
+import AuthContainer from '../components/UI/AuthContainer';
+import NoAuthContainer from '../components/UI/NoAuthContainer';
+import PostContainer from '../components/Post/PostContainer';
 
-export default function Post({ data: { mdx: post } }) {
-  const { banner, title, date, showBanner } = post.frontmatter;
+const isBrowser = typeof window !== `undefined`;
+
+const onRedirectCallback = appState => {
+  history.push(
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : isBrowser
+      ? window.location.pathname
+      : '/',
+  );
+};
+
+export default function Post({ pageContext, data: { mdx: post } }) {
+  const { isAuthApp } = pageContext;
   return (
-    <Layout>
-      <div className="post-single-container">
-        <article className="post-single">
-          <header>
-            {banner && showBanner ? (
-              <Img
-                fluid={banner.sharp.fluid}
-                alt={title}
-                style={{ height: '70vh', textAlign: 'center' }}
-              />
-            ) : null}
-            <h1 style={{ textAlign: 'center' }}>{title}</h1>
-            <div style={{ textAlign: 'center' }}>
-              <span>{date}</span>
-            </div>
-          </header>
-          <div style={{ textAlign: 'justify', padding: 20 }}>
-            <MDXRenderer>{post.body}</MDXRenderer>
-          </div>
-        </article>
-      </div>
-    </Layout>
+    <div>
+      {isAuthApp ? (
+        <Auth0Provider
+          domain={process.env.GATSBY_AUTH0_DOMAIN}
+          client_id={process.env.GATSBY_AUTH0_CLIENT_ID}
+          redirect_uri={isBrowser ? window.location.origin : '/'}
+          onRedirectCallback={onRedirectCallback}
+        >
+          <AuthContainer
+            siteTitle={pageContext.siteTitle}
+            brand={pageContext.brand}
+            copyright={pageContext.copyrightMessage}
+            loginOption={pageContext.loginOption}
+            isAuthApp={pageContext.isAuthApp}
+            slugs={pageContext.slugs}
+          >
+            <PostContainer data={post.body} frontmatter={post.frontmatter} />
+          </AuthContainer>
+        </Auth0Provider>
+      ) : (
+        <NoAuthContainer
+          siteTitle={pageContext.siteTitle}
+          brand={pageContext.brand}
+          newsletter={pageContext.newsletter}
+          copyright={pageContext.copyrightMessage}
+          loginOption={pageContext.loginOption}
+          isAuthApp={pageContext.isAuthApp}
+          slugs={pageContext.slugs}
+        >
+          <PostContainer data={post.body} frontmatter={post.frontmatter} />
+        </NoAuthContainer>
+      )}
+    </div>
   );
 }
 
@@ -51,11 +76,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-// banner {
-//     sharp: childImageSharp {
-//       fluid {
-//         ...GatsbyImageSharpFluid_tracedSVG
-//       }
-//     }
-// }
