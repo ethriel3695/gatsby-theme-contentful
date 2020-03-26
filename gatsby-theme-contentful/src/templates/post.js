@@ -6,13 +6,15 @@ import AuthContainer from '../components/UI/AuthContainer';
 import NoAuthContainer from '../components/UI/NoAuthContainer';
 import PostContainer from '../components/Post/PostContainer';
 
-const isBrowser = typeof window !== undefined;
+const isBrowser = typeof window !== `undefined`;
 
 const onRedirectCallback = appState => {
   history.push(
     appState && appState.targetUrl
       ? appState.targetUrl
-      : window.location.pathname,
+      : isBrowser
+      ? window.location.pathname
+      : '/',
   );
 };
 

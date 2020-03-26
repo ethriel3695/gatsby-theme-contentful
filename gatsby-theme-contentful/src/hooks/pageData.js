@@ -12,12 +12,6 @@ export const usePageData = () => {
             order
             slug
             title
-            image {
-              description
-              fluid(maxWidth: 1920) {
-                ...GatsbyContentfulFluid_withWebp
-              }
-            }
           }
         }
       }
@@ -27,9 +21,9 @@ export const usePageData = () => {
 };
 
 // TODO: Need to find a way to dynamically insert this so I can get Images
-// image {
-//             description
-//             fluid(maxWidth: 1903) {
-//               ...GatsbyContentfulFluid
+// // image {
+//               description
+//               fluid(maxWidth: 1920) {
+//                 ...GatsbyContentfulFluid_withWebp
+//               }
 //             }
-//           }

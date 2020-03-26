@@ -5,7 +5,7 @@ import history from '../utils/history';
 import AuthContainer from '../components/UI/AuthContainer';
 import NoAuthContainer from '../components/UI/NoAuthContainer';
 
-const isBrowser = typeof window !== undefined;
+const isBrowser = typeof window !== `undefined`;
 
 const onRedirectCallback = appState => {
   history.push(
