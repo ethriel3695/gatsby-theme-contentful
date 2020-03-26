@@ -51,16 +51,16 @@ export default function IssueForm() {
   return (
     <div className={classes.root}>
       <TextFieldInput
-        id="feedback"
-        label="Give us your feedback"
-        value={feedback}
-        onChange={event => handleChange(event, setFeedback)}
-      />
-      <TextFieldInput
         id="name"
         label="Name"
         value={name}
         onChange={event => handleChange(event, setName)}
+      />
+      <TextFieldInput
+        id="feedback"
+        label="Give us your feedback"
+        value={feedback}
+        onChange={event => handleChange(event, setFeedback)}
       />
       <TextFieldInput
         id="curiousity"

@@ -12,6 +12,12 @@ export const usePageData = () => {
             order
             slug
             title
+            image {
+              description
+              fluid(maxWidth: 1920) {
+                ...GatsbyContentfulFluid_withWebp
+              }
+            }
           }
         }
       }

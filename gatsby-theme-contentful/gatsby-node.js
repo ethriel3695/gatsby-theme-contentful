@@ -12,9 +12,7 @@ let assetPath;
 
 // These templates are simply data-fetching wrappers that import components
 const PageTemplate = require.resolve(`./src/templates/index`);
-// const ToolsTemplate = require.resolve(`./src/templates/tools`);
 const PostTemplate = require.resolve(`./src/templates/post`);
-// const TagTemplate = require.resolve(`./src/templates/Tags`);
 
 // Verify the data directory exists
 exports.onPreBootstrap = ({ store, reporter }, options) => {
@@ -125,6 +123,38 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     }
   `);
 
+  // Considering pulling in contentful data here to generate pages
+  // allContentfulPage {
+  //       nodes {
+  //         title
+  //         pageType
+  //         section {
+  //           id
+  //           order
+  //           slug
+  //           title
+  //           image {
+  //             description
+  //             fluid(maxWidth: 1904) {
+  //               src
+  //               srcSet
+  //               srcSetWebp
+  //               sizes
+  //             }
+  //           }
+  //           description {
+  //             json
+  //           }
+  //           item {
+  //             title
+  //             subHeader
+  //             link
+  //             slug
+  //           }
+  //         }
+  //       }
+  //     }
+
   if (result.errors) {
     reporter.panic('error loading nav', reporter.errors);
     return;
@@ -138,6 +168,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     newsletter,
   } = result.data;
   const posts = result.data.allMdx.nodes;
+  // const pages = result.data.allContentfulPage.nodes;
 
   const {
     title: siteTitle,
@@ -175,6 +206,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         slug,
         showBanner,
         slugs,
+        // pages,
       },
     });
   });
@@ -198,6 +230,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         slug,
         showBanner,
         slugs,
+        // pages,
       },
     });
   });

@@ -16,18 +16,14 @@ export default function ListComponent({ items }) {
   return (
     <div className={classes.root}>
       <List aria-label="Form Demo Records">
-        {items.map(({ feedback, name, curiousity }, index) => {
+        {items.map(({ feedback, name }, index) => {
           return (
             <div key={`list-${index}`}>
-              <ListItem key={index}>
-                <ListItemText key={`name-${index}`} primary={`${name}`} />
+              <ListItem key={`test-${index}`}>
                 <ListItemText
-                  key={`feedback-${index}`}
-                  primary={`${feedback}`}
-                />
-                <ListItemText
-                  key={`curiousity-${index}`}
-                  primary={`${curiousity}`}
+                  key={`name-${index}`}
+                  primary={`${name}`}
+                  secondary={`${feedback}`}
                 />
               </ListItem>
             </div>
