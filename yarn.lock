@@ -1892,9 +1892,9 @@ acorn-jsx@^5.1.0:
   integrity sha512-tMUqwBWfLFbJbizRmEcWSLw6HnFzfdJs2sOJEOwwtVPMoH/0Ay+E703oZz78VSXZiiDcZrQ5XKjPIUQixhmgVw==
 
 acorn@^6.2.1:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.0.tgz#b659d2ffbafa24baf5db1cdbb2c94a983ecd2784"
-  integrity sha512-gac8OEcQ2Li1dxIEWGZzsp2BitJxwkwcOm0zHAJLcPJaVvm58FRnk6RkuLRpU1EujipU2ZFODv2P9DLMfnV8mw==
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.1.tgz#531e58ba3f51b9dacb9a6646ca4debf5b14ca474"
+  integrity sha512-ZVA9k326Nwrj3Cj9jlh3wGFutC2ZornPNARZwsNYqQYgN0EsV2d53w5RN/co65Ohn4sUAUtb1rSUAOD6XN9idA==
 
 acorn@^7.1.0:
   version "7.1.0"
@@ -6282,6 +6282,29 @@ gatsby-remark-smartypants@^2.1.17:
     retext-smartypants "^3.0.3"
     unist-util-visit "^1.4.1"
 
+gatsby-source-contentful@^2.1.77:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/gatsby-source-contentful/-/gatsby-source-contentful-2.2.5.tgz#0dd96362cdc83793a028133e002ada7f87ca9151"
+  integrity sha512-0bn7ZVfpz69QYS0z71z/GaGqRGPuKQ/Jp7cDfXKaVnkFO95atNh95V+eaAoUkuGt/EZqKqvGXPcBWnTpyz7hJA==
+  dependencies:
+    "@babel/runtime" "^7.8.7"
+    "@contentful/rich-text-types" "^13.4.0"
+    "@hapi/joi" "^15.1.1"
+    axios "^0.19.2"
+    base64-img "^1.0.4"
+    bluebird "^3.7.2"
+    chalk "^2.4.2"
+    contentful "^7.14.0"
+    deep-map "^1.5.0"
+    fs-extra "^8.1.0"
+    gatsby-core-utils "^1.1.1"
+    gatsby-plugin-sharp "^2.5.3"
+    gatsby-source-filesystem "^2.2.2"
+    is-online "^8.2.1"
+    json-stringify-safe "^5.0.1"
+    lodash "^4.17.15"
+    qs "^6.9.1"
+
 gatsby-source-contentful@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/gatsby-source-contentful/-/gatsby-source-contentful-2.2.4.tgz#b3d5c8d8c36bc438df6c33c606025dcfa9b09336"
@@ -6369,6 +6392,56 @@ gatsby-telemetry@^1.1.49:
     stack-trace "^0.0.10"
     stack-utils "1.0.2"
     uuid "3.3.3"
+
+gatsby-theme-contentful@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-contentful/-/gatsby-theme-contentful-0.0.2.tgz#ec2bf760226035a08670467ba4f550860883c75a"
+  integrity sha512-MADRshVbvto2HUDXlUzQGkpzLNeLOZNHWYoBEShO4LgHnfo94jLv9LKcbzgiWKg7l0B2YDU1ErRjMJePcMmMBg==
+  dependencies:
+    "@contentful/rich-text-react-renderer" "^13.4.0"
+    "@contentful/rich-text-types" "^14.0.1"
+    "@emotion/core" "^10.0.22"
+    "@fortawesome/fontawesome-svg-core" "^1.2.25"
+    "@fortawesome/free-brands-svg-icons" "^5.11.2"
+    "@fortawesome/free-solid-svg-icons" "^5.11.2"
+    "@fortawesome/react-fontawesome" "^0.1.8"
+    "@material-ui/core" "^4.7.2"
+    "@mdx-js/mdx" "^1.5.1"
+    "@mdx-js/react" "^1.5.1"
+    "@theme-ui/prism" "^0.2.50"
+    "@theme-ui/typography" "^0.2.46"
+    auth0-js "^9.11.3"
+    gatsby-image "^2.2.34"
+    gatsby-plugin-emotion "^4.1.16"
+    gatsby-plugin-feed "^2.3.23"
+    gatsby-plugin-material-ui "^2.1.6"
+    gatsby-plugin-mdx "^1.0.59"
+    gatsby-plugin-page-creator "^2.1.33"
+    gatsby-plugin-react-helmet "^3.1.16"
+    gatsby-plugin-sharp "^2.3.5"
+    gatsby-plugin-theme-ui "^0.2.43"
+    gatsby-remark-abbr "^2.0.0"
+    gatsby-remark-code-titles "^1.1.0"
+    gatsby-remark-copy-linked-files "^2.1.31"
+    gatsby-remark-images "^3.1.35"
+    gatsby-remark-numbered-footnotes "^1.0.1"
+    gatsby-remark-smartypants "^2.1.17"
+    gatsby-source-contentful "^2.1.77"
+    gatsby-source-filesystem "^2.1.40"
+    gatsby-transformer-json "^2.2.20"
+    gatsby-transformer-remark "^2.6.39"
+    gatsby-transformer-sharp "^2.3.7"
+    google-map-react "^1.1.4"
+    history "^4.10.1"
+    lodash.merge "^4.6.2"
+    react-helmet "^5.2.1"
+    react-moment "^0.9.6"
+    react-swipeable-views "^0.13.3"
+    react-swipeable-views-utils "^0.13.3"
+    react-switch "^5.0.1"
+    remark-slug "^5.1.2"
+    rimraf "^3.0.0"
+    theme-ui "^0.2.49"
 
 gatsby-transformer-json@^2.2.20:
   version "2.2.26"
