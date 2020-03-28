@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
+import { navigate } from 'gatsby';
 import WidgetHandler from '../components/WidgetHandler';
 import { Auth0Provider } from '../react-auth0-spa';
-import history from '../utils/history';
 import AuthContainer from '../components/UI/AuthContainer';
 import NoAuthContainer from '../components/UI/NoAuthContainer';
 
 const isBrowser = typeof window !== `undefined`;
 
 const onRedirectCallback = appState => {
-  history.push(
+  navigate(
     appState && appState.targetUrl
       ? appState.targetUrl
       : window.location.pathname,
