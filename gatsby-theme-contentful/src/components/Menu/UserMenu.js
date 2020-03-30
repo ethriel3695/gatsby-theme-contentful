@@ -26,13 +26,18 @@ export default function UserMenu({
       onClose={handleClose}
     >
       {isAuthenticated && (
-        <MenuItem
-          onClick={() => {
-            logout();
-          }}
-        >
-          <Link to="/">Log Out</Link>
-        </MenuItem>
+        <div>
+          <MenuItem>
+            <Link to="/profile">Profile</Link>
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              logout();
+            }}
+          >
+            <Link to="/">Log Out</Link>
+          </MenuItem>
+        </div>
       )}
     </Menu>
   );
