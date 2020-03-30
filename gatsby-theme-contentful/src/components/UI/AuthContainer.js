@@ -17,10 +17,10 @@ export default function AuthContainer({
     if (loading || isAuthenticated) {
       return;
     }
-    const fn = async () => {
-      await loginWithRedirect({});
-    };
-    fn();
+    // const fn = async () => {
+    //   await loginWithRedirect({});
+    // };
+    // fn();
   }, [loading, isAuthenticated, loginWithRedirect]);
 
   return (
