@@ -1,12 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { SectionWidget } from './PageWidget/SectionWidget';
-import { useContentful } from '../hooks/contentful';
 
 export default function Landing({ pageContext }) {
-  const { siteTitle, siteDescription, siteGreeting } = pageContext;
+  const { siteTitle, siteDescription, siteGreeting, page } = pageContext;
   let pageDetails = null;
-  const data = useContentful();
+  const data = page.section;
   pageDetails = (
     <div style={{ padding: 20 }}>
       <Typography

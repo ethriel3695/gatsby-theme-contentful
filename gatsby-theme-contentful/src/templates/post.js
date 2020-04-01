@@ -35,7 +35,6 @@ export default function Post({ pageContext, data: { mdx: post } }) {
             copyright={pageContext.copyrightMessage}
             loginOption={pageContext.loginOption}
             isAuthApp={pageContext.isAuthApp}
-            slugs={pageContext.slugs}
           >
             <PostContainer data={post.body} frontmatter={post.frontmatter} />
           </AuthContainer>
@@ -48,7 +47,6 @@ export default function Post({ pageContext, data: { mdx: post } }) {
           copyright={pageContext.copyrightMessage}
           loginOption={pageContext.loginOption}
           isAuthApp={pageContext.isAuthApp}
-          slugs={pageContext.slugs}
         >
           <PostContainer data={post.body} frontmatter={post.frontmatter} />
         </NoAuthContainer>

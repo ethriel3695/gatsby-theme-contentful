@@ -11,8 +11,9 @@ let contentPath;
 let assetPath;
 
 // These templates are simply data-fetching wrappers that import components
-const PageTemplate = require.resolve(`./src/templates/index`);
+const HomeTemplate = require.resolve(`./src/templates/index`);
 const PostTemplate = require.resolve(`./src/templates/post`);
+const PageTemplate = require.resolve(`./src/templates/page.js`);
 
 // Verify the data directory exists
 exports.onPreBootstrap = ({ store, reporter }, options) => {
@@ -47,6 +48,46 @@ exports.onCreateNode = ({ node, getNode }, settings) => {
   if (node.internal.type !== 'MarkdownRemark') return;
   console.log('PLUGIN', node.fields.slug);
 };
+
+// TODO: Make is so images in contentful can be optional
+
+// exports.createSchemaCustomization = ({ actions }) => {
+//   const { createTypes } = actions;
+
+//   createTypes(`
+//     type ContentfulSection implements Node {
+//       image: File @fileByRelativePath
+//     }
+//   `);
+// };
+
+// exports.createResolvers = ({
+//   actions,
+//   cache,
+//   createNodeId,
+//   createResolvers,
+//   store,
+//   reporter,
+// }) => {
+//   const { createNode } = actions;
+//   createResolvers({
+//     ContentfulSection: {
+//       imageFile: {
+//         type: `File`,
+//         resolve(source, args, context, info) {
+//           return createRemoteFileNode({
+//             url: source.url,
+//             store,
+//             cache,
+//             createNode,
+//             createNodeId,
+//             reporter,
+//           });
+//         },
+//       },
+//     },
+//   });
+// };
 
 // Query for nav and create pages
 exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
@@ -93,26 +134,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         extension
         publicURL
       }
-      hero: file(
-        relativePath: { regex: "/(jpg)|(jpeg)|(png)|(svg)/" }
-        relativeDirectory: { eq: "hero" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 1686) {
-            base64
-            tracedSVG
-            aspectRatio
-            src
-            srcSet
-            srcSetWebp
-            sizes
-            originalImg
-            originalName
-          }
-        }
-        extension
-        publicURL
-      }
       newsletter: file(
         relativePath: { regex: "/(pdf)/" }
         relativeDirectory: { eq: "newsletter" }
@@ -120,40 +141,38 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         extension
         publicURL
       }
+      allContentfulPage {
+        nodes {
+          title
+          pageType
+          slug
+          section {
+            id
+            order
+            title
+            image {
+              description
+              fluid(maxWidth: 1904) {
+                src
+                srcSet
+                srcSetWebp
+                sizes
+              }
+            }
+            description {
+              json
+            }
+            item {
+              title
+              subHeader
+              link
+              slug
+            }
+          }
+        }
+      }
     }
   `);
-
-  // Considering pulling in contentful data here to generate pages
-  // allContentfulPage {
-  //       nodes {
-  //         title
-  //         pageType
-  //         section {
-  //           id
-  //           order
-  //           slug
-  //           title
-  //           image {
-  //             description
-  //             fluid(maxWidth: 1904) {
-  //               src
-  //               srcSet
-  //               srcSetWebp
-  //               sizes
-  //             }
-  //           }
-  //           description {
-  //             json
-  //           }
-  //           item {
-  //             title
-  //             subHeader
-  //             link
-  //             slug
-  //           }
-  //         }
-  //       }
-  //     }
 
   if (result.errors) {
     reporter.panic('error loading nav', reporter.errors);
@@ -168,7 +187,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     newsletter,
   } = result.data;
   const posts = result.data.allMdx.nodes;
-  // const pages = result.data.allContentfulPage.nodes;
+  const pages = result.data.allContentfulPage.nodes;
 
   const {
     title: siteTitle,
@@ -180,13 +199,30 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     greeting: siteGreeting,
   } = siteMetadata;
   const brand = brandLogo;
-  const slugs = [];
 
-  posts.forEach(post => {
-    slugs.push(post.frontmatter.slug);
+  // Generate a page from each Contentful "Page" Content Model
+  pages.forEach(page => {
+    const slug = page.slug;
+    createPage({
+      path: slug,
+      component: require.resolve(PageTemplate),
+      context: {
+        siteTitle,
+        siteDescription,
+        siteGreeting,
+        copyrightMessage,
+        loginOption,
+        socialLinks,
+        brand,
+        newsletter,
+        isAuthApp,
+        slug,
+        page,
+      },
+    });
   });
 
-  // Create a page for each Article
+  // Create a page for each Article from "mdx"
   posts.forEach(post => {
     const slug = post.frontmatter.slug;
     const showBanner = post.frontmatter.showBanner;
@@ -205,32 +241,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         isAuthApp,
         slug,
         showBanner,
-        slugs,
-        // pages,
-      },
-    });
-  });
-  posts.forEach(post => {
-    const slug = post.frontmatter.slug;
-    const showBanner = post.frontmatter.showBanner;
-    createPage({
-      path: basePath,
-      component: require.resolve(PageTemplate),
-      context: {
-        siteTitle,
-        siteDescription,
-        siteGreeting,
-        copyrightMessage,
-        loginOption,
-        socialLinks,
-        brand,
-        hero,
-        newsletter,
-        isAuthApp,
-        slug,
-        showBanner,
-        slugs,
-        // pages,
       },
     });
   });

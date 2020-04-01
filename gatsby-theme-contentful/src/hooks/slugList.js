@@ -16,6 +16,12 @@ export const useSlugList = () => {
           }
         }
       }
+      allContentfulPage {
+        nodes {
+          title
+          slug
+        }
+      }
     }
   `);
   return data;

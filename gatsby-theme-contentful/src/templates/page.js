@@ -15,7 +15,7 @@ const onRedirectCallback = appState => {
   );
 };
 
-const HomeTemplate = ({ pageContext }) => {
+const PageTemplate = ({ pageContext }) => {
   const { isAuthApp } = pageContext;
   return (
     <Fragment>
@@ -32,7 +32,6 @@ const HomeTemplate = ({ pageContext }) => {
             copyright={pageContext.copyrightMessage}
             loginOption={pageContext.loginOption}
             isAuthApp={pageContext.isAuthApp}
-            slugs={pageContext.slugs}
           >
             <WidgetHandler pageContext={pageContext} />
           </AuthContainer>
@@ -45,7 +44,6 @@ const HomeTemplate = ({ pageContext }) => {
           copyright={pageContext.copyrightMessage}
           loginOption={pageContext.loginOption}
           isAuthApp={pageContext.isAuthApp}
-          slugs={pageContext.slugs}
         >
           <WidgetHandler pageContext={pageContext} />
         </NoAuthContainer>
@@ -53,4 +51,4 @@ const HomeTemplate = ({ pageContext }) => {
     </Fragment>
   );
 };
-export default HomeTemplate;
+export default PageTemplate;
