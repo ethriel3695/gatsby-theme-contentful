@@ -60,6 +60,7 @@
     "google-map-react": "^1.1.4",
     "history": "^4.10.1",
     "lodash.merge": "^4.6.2",
+    "react-google-maps": "^9.4.5",
     "react-helmet": "^5.2.1",
     "react-moment": "^0.9.6",
     "react-swipeable-views": "^0.13.3",
