@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
+import About from '../About/About';
 
 const HeroLanding = ({ page }) => {
   return (
@@ -49,6 +50,9 @@ const HeroLanding = ({ page }) => {
                       {sect.title}
                     </Typography>
                   </Grid>
+                  <div style={{ marginTop: '20px' }}>
+                    <About />
+                  </div>
                 </Grid>
               </div>
             );
