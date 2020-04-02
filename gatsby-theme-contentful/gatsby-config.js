@@ -86,11 +86,45 @@ module.exports = ({
           accessToken: process.env.GATSBY_CONTENTFUL_API,
         },
       },
+      {
+        resolve: `gatsby-plugin-gtag`,
+        options: {
+          // your google analytics tracking id
+          trackingId: process.env.GATSBY_GOOGLE_ANALYTICS_ID,
+          // Puts tracking script in the head instead of the body
+          head: false,
+          // enable ip anonymization
+          anonymize: true,
+        },
+      },
       'gatsby-transformer-sharp',
       'gatsby-plugin-emotion',
       'gatsby-plugin-theme-ui',
       'gatsby-plugin-material-ui',
       'gatsby-plugin-react-helmet',
+      {
+        resolve: `gatsby-plugin-manifest`,
+        options: {
+          name: `BYOBroom`,
+          icon: `content/assets/img/faces/marc.jpg`,
+          short_name: `BYOBroom`,
+          start_url: `/profile`,
+          background_color: `#325DA7`,
+          theme_color: `#325DA7`,
+          display: `standalone`,
+          scope: '/',
+          crossOrigin: `use-credentials`,
+          // theme_color_in_head: false
+        },
+      },
+      {
+        resolve: 'gatsby-plugin-offline',
+        options: {
+          workboxConfig: {
+            globPatterns: ['**/*'],
+          },
+        },
+      },
     ].filter(Boolean),
   };
 };
