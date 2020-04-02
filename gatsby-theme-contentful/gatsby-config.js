@@ -106,13 +106,7 @@ module.exports = ({
         resolve: `gatsby-plugin-manifest`,
         options: {
           name: `BYOBroom`,
-          icons: [
-            {
-              src: `content/assets/img/faces/marc.jpg`,
-              type: `image/png`,
-              sizes: `144x144`,
-            },
-          ],
+          icon: `content/assets/img/faces/marc.png`,
           short_name: `BYOBroom`,
           start_url: `/`,
           background_color: `#325DA7`,
