@@ -107,7 +107,7 @@ export default function About() {
               <Button color="github" round>
                 <a
                   style={{ textDecoration: 'none', color: '#eee' }}
-                  href="sms://+12085697538?body=What%20Can%20I%20Assist%20You%20With?"
+                  href="sms:12085697538"
                 >
                   Text
                 </a>
