@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import Button from '@material-ui/core/Button';
+import Headroom from 'react-headroom';
 import HeaderText from '../Text/TypographyH6';
 import SimpleAppBar from './SimpleAppBar';
 import HeaderButton from '../Button/HeaderButton';
@@ -17,6 +18,7 @@ import { useBrandData } from '../../hooks/brandData';
 const useStyles = makeStyles({
   grow: {
     flexGrow: 1,
+    textAlign: 'center',
   },
   menuButton: {
     marginLeft: -12,
@@ -25,6 +27,7 @@ const useStyles = makeStyles({
   plainLink: {
     color: '#eee',
     textDecoration: 'none',
+    fontSize: '28px',
   },
   foregroundColor: {
     color: '#eee',
@@ -89,76 +92,81 @@ const Header = ({
     brandLogo = false;
   }
   return (
-    <SimpleAppBar className={'appHeader'}>
-      {(isAuthenticated && isAuthApp) || !isAuthApp ? (
-        <HeaderButton
-          className={classes.menuButton}
-          aria-label="Menu"
-          aria-owns={left ? 'menu-sidebar' : undefined}
-          onClick={toogleDrawer}
-        >
-          <FontAwesomeIcon icon={faBars} className={classes.foregroundColor} />
-        </HeaderButton>
-      ) : null}
-      <HeaderText className={classes.grow}>
-        <Link to="/" className={classes.plainLink}>
-          {brandLogo && BrandContainer}
-          {title && !brandLogo && title}
-        </Link>
-      </HeaderText>
-      {(isAuthenticated && isAuthApp) || !isAuthApp ? (
-        <SwipeDrawer left={left} handleClose={toogleDrawer}>
-          <NavigationList />
-        </SwipeDrawer>
-      ) : null}
-      {newsletter ? (
-        <React.Fragment>
-          <a
-            href={`${newsletter.publicURL}`}
-            className={classes.plainLink}
-            style={{ paddingRight: '15px' }}
-            target="_blank"
-            rel="noopener noreferrer"
+    <Headroom>
+      <SimpleAppBar className={'appHeader'}>
+        {(isAuthenticated && isAuthApp) || !isAuthApp ? (
+          <HeaderButton
+            className={classes.menuButton}
+            aria-label="Menu"
+            aria-owns={left ? 'menu-sidebar' : undefined}
+            onClick={toogleDrawer}
           >
-            <HeaderText className={classes.grow}>
-              {`${newsletterTitle}`}
-            </HeaderText>
-          </a>
-        </React.Fragment>
-      ) : null}
-
-      <div>
-        {isAuthenticated && isAuthApp ? (
-          <React.Fragment>
-            <HeaderButton
-              aria-owns={open ? 'menu-appbar' : undefined}
-              onClick={handleMenu}
-            >
-              <FontAwesomeIcon
-                icon={faUserCircle}
-                className={classes.foregroundColor}
-              />
-            </HeaderButton>
-
-            <UserMenu
-              anchorEl={anchorEl}
-              open={open}
-              handleClose={handleClose}
-              logout={logout}
-              isAuthenticated={isAuthenticated}
+            <FontAwesomeIcon
+              icon={faBars}
+              className={classes.foregroundColor}
             />
+          </HeaderButton>
+        ) : null}
+        <HeaderText className={classes.grow}>
+          <Link to="/" className={classes.plainLink}>
+            {brandLogo && BrandContainer}
+            {title && !brandLogo && title}
+          </Link>
+        </HeaderText>
+        {(isAuthenticated && isAuthApp) || !isAuthApp ? (
+          <SwipeDrawer left={left} handleClose={toogleDrawer}>
+            <NavigationList />
+          </SwipeDrawer>
+        ) : null}
+        {newsletter ? (
+          <React.Fragment>
+            <a
+              href={`${newsletter.publicURL}`}
+              className={classes.plainLink}
+              style={{ paddingRight: '15px' }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <HeaderText className={classes.grow}>
+                {`${newsletterTitle}`}
+              </HeaderText>
+            </a>
           </React.Fragment>
         ) : null}
-        {!isAuthenticated && isAuthApp ? (
-          <Button
-            onClick={() => loginWithRedirect({})}
-            className={classes.foregroundColor}
-          >
-            {loginDesc}
-          </Button>
-        ) : null}
-      </div>
-    </SimpleAppBar>
+
+        <div>
+          {isAuthenticated && isAuthApp ? (
+            <React.Fragment>
+              <HeaderButton
+                aria-owns={open ? 'menu-appbar' : undefined}
+                onClick={handleMenu}
+              >
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  className={classes.foregroundColor}
+                />
+              </HeaderButton>
+
+              <UserMenu
+                anchorEl={anchorEl}
+                open={open}
+                handleClose={handleClose}
+                logout={logout}
+                isAuthenticated={isAuthenticated}
+              />
+            </React.Fragment>
+          ) : null}
+          {!isAuthenticated && isAuthApp ? (
+            <Button
+              onClick={() => loginWithRedirect({})}
+              className={classes.foregroundColor}
+            >
+              {loginDesc}
+            </Button>
+          ) : null}
+        </div>
+      </SimpleAppBar>
+    </Headroom>
   );
 };
 

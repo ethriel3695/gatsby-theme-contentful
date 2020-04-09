@@ -61,14 +61,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM Do, YYYY")
-        banner {
-          sharp: childImageSharp {
-            fluid(maxWidth: 1686) {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
-          }
-        }
-        showBanner
       }
       body
     }
