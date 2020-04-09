@@ -110,7 +110,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
           frontmatter {
             slug
             categories
-            showBanner
           }
         }
       }
@@ -240,7 +239,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         newsletter,
         isAuthApp,
         slug,
-        showBanner,
       },
     });
   });

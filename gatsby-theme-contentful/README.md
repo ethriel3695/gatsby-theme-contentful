@@ -10,26 +10,37 @@
 
 ## Current Limitations
 
-1. Contentful currently only renders content on the home page and in a very specific format
+1. Contentful currently requires a placholder Image on one section
+
+- You can just add a section named Placeholder Content with an Image and the CMS will load correctly
 
 - The data schema is as follows:
 
-  #### Section:
+#### Page:
 
-  - Title: short Text (250 characters)
-  - Description: rich text
-  - Item: One to many items can be added to a section
-  - Slug: Page path for content (Not currently used)
-  - Order: The order that content appears on home page (Ascending)
+- Title: short Text (250 characters)
+- Page Type: Short text (250 characters) - Used to render specific page templates in the code
+  - Currently supported page types: (HeroLanding, Landing)
+- Section: One to many sections can be added to a page
+- Slug: Page path for content
 
-  #### Item: (Curently only renders as a button)
+#### Section:
 
-  ##### Future Functionality: Change to a widget and render content and components dynamically
+- Title: short Text (250 characters)
+- Description: rich text
+- Slug: Page path for section
+- Order: The order that content appears on the page (Ascending)
+- Item: One to many items can be added to a section
+- Image: Media (Not required)
 
-  - Title: Short Text (250 characters)
-  - Sub Header: Short Text (250 characters)
-  - Link: External links to other websites
-  - Slug: Path to one of the dynamically generated pages (MDX currently)
+#### Item: (Curently only renders as a button)
+
+##### Future Functionality: Change to a widget and render content and components dynamically
+
+- Title: Short Text (250 characters)
+- Sub Header: Short Text (250 characters)
+- Link: External links to other websites
+- Slug: Path to one of the dynamically generated pages (MDX currently)
 
 ## Create Project
 
@@ -56,7 +67,7 @@
     "gatsby": "^2.19.12",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "gatsby-theme-contentful": "^0.0.1"
+    "gatsby-theme-contentful": "^0.0.15"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
@@ -93,7 +104,7 @@ module.exports = {
     copyright: `Copyright message unique to site or company`,
     loginDesc:
       'If isAuthApp then this is the name of the button to login (ex: Login, Login / Signup)',
-    isAuthApp: false, // default is true (If true enables authentication)
+    isAuthApp: false, // default is true (If true, enables authentication)
     newsletterTitle: 'Text description of the newsletter button', // If empty no newsletter shows up in Header
     social: {
       facebook: 'altcampus',
@@ -106,19 +117,23 @@ module.exports = {
 };
 ```
 
+## Authentication
+
+Authentication now works out of the box if you provide the credentials in the `.env.development` and `.env.production` files
+Also, in `gatsby-config.js` the `isAuthApp` key needs to be set to `true`
+
 ## Content directories
 
 | Key           | Default value                | Description                                                                                                 |
 | ------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `contentPath` | `/content/post`              | Directory for blog posts                                                                                    |
 | `assetPath`   | `/content/assets`            | Location of assets                                                                                          |
-| `hero`        | `/content/assets/hero`       | An image in the hero directory will render an image at the top of the home page                             |
 | `logo`        | `/content/assets/logo`       | An image in the logo directory will replace the title in the header with a brand logo instead               |
 | `newsletter`  | `/content/assets/newsletter` | A pdf in this directory will provide a static asset for a newsletter with the newsletter link in the header |
 | `files`       | `/content/assets/files`      | A directory to store files for use across the website                                                       |
 | `mdx`         | `true`                       | MDX renders the additional pages in the site currently and will be used in the future alongside contentful  |
 
-## Post Creation MDX
+## Page/Post Creation MDX
 
 `NOTE:` Folder structure `samplePost/images/[image]`, `samplePost.mdx`
 
@@ -130,12 +145,51 @@ slug: /sample
 label: Navigation Text
 title: Title of post
 description: Description of post
-date: Date post is written (Ex. 2020-02-07)
+date: Date post is written (Ex. 2020-02-07) (Not Required)
 categories: ['react', 'node'] (Not currently rendered but in progress)
 showBanner: true (shows the image in post)
 banner: './images/hero.jpg'
 published: true
 ---
+```
+
+## Page/Post Creation with Contentful
+
+You can now create a Page in contentful and the page/post will be generated in the application
+
+`gatsby-node` object
+
+```
+allContentfulPage {
+  nodes {
+    title
+    pageType
+    slug
+    section {
+      id
+      order
+      title
+      image {
+        description
+        fluid(maxWidth: 1904) {
+          src
+          srcSet
+          srcSetWebp
+          sizes
+        }
+      }
+      description {
+        json
+      }
+      item {
+        title
+        subHeader
+        link
+        slug
+      }
+    }
+  }
+}
 ```
 
 ## Environment variables
@@ -164,13 +218,17 @@ GATSBY_GOOGLE_CALENDAR_URL = `https://calendar.google.com/calendar/embed?src=[em
 // Contentful credentials if you want to use contentful
 GATSBY_CONTENTFUL_SPACEID = `space id from contentful`;
 GATSBY_CONTENTFUL_API = `special token from contentful`;
+
+GATSBY_FORM_API = `URL for submitting form contents REST API`;
+GATSBY_FORM_GET_API = `URL for getting form contents REST API`;
+GATSBY_GOOGLE_ANALYTICS_ID = `Google Analytics ID`;
 ```
 
 ```jsx
 // Example of using google map
-import GoogleMap from 'gatsby-theme-contentful/src/components/Maps/GoogleMap';
+import GoogleMaps from 'gatsby-theme-contentful/src/components/Maps/RegularGoogleMap';
 
-<GoogleMap />;
+<GoogleMaps />;
 ```
 
 ```jsx
