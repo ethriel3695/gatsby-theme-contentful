@@ -7,8 +7,10 @@ export default function UserMenu({
   anchorEl,
   open,
   handleClose,
-  logout,
+  logout = null,
+  login = null,
   isAuthenticated,
+  loginLabel = '',
 }) {
   return (
     <Menu
@@ -25,7 +27,7 @@ export default function UserMenu({
       open={open}
       onClose={handleClose}
     >
-      {isAuthenticated && (
+      {isAuthenticated ? (
         <div>
           <MenuItem>
             <Link to="/profile">Profile</Link>
@@ -36,6 +38,16 @@ export default function UserMenu({
             }}
           >
             <Link to="/">Log Out</Link>
+          </MenuItem>
+        </div>
+      ) : (
+        <div>
+          <MenuItem
+            onClick={() => {
+              login();
+            }}
+          >
+            <Link to="/">{loginLabel}</Link>
           </MenuItem>
         </div>
       )}

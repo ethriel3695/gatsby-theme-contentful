@@ -5,6 +5,23 @@ import './layout.css';
 import Header from './Header/Header';
 import Footer from './Footer';
 
+const isBrowser = typeof window !== 'undefined';
+let deferredPrompt;
+if (isBrowser) {
+  window.addEventListener('beforeinstallprompt', event => {
+    event.preventDefault();
+    deferredPrompt = event;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(choiceResult => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+    });
+  });
+}
+
 const Layout = ({ children, ...props }) => {
   return (
     <StyledLayout>
