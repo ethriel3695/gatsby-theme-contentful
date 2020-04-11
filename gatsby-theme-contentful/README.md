@@ -42,7 +42,40 @@
 - Link: External links to other websites
 - Slug: Path to one of the dynamically generated pages (MDX currently)
 
-## Create Project
+## Quick start
+
+1.  **Create an Authenticated Site**
+
+    In order to get an authentication enabled site up and going follow these steps:
+
+    - Open a terminal of your choice **(Terminal on mac, Command Prompt, Powershell or Bash on Windows)**
+    - Navigate to the directory where you store your repositories
+
+    - Example:
+
+      ```sh
+      cd Users/[username]/source
+      ```
+
+    - Clone the authentication demo
+      ```sh
+       git clone https://github.com/ethriel3695/authentication-demo
+      ```
+
+2.  **Open the source code and start editing!**
+
+    - Open the `authentication-demo` directory in your code editor of choice
+
+    ### Add content through mdx
+
+    - Create a `content` folder
+    - Create a `post` folder
+    - Create a folder such as `firstPost`
+    - Create an images folder
+    - Add an image in either `png`, `jpg` or `webp` format
+    - Create an `mdx` file `firstPost.mdx`
+
+## Create Project Manually
 
 1. Create a project folder in your repository directory `mkdir [projectName]`
 2. Through the command line type `cd [projectName]`
@@ -67,7 +100,7 @@
     "gatsby": "^2.19.12",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "gatsby-theme-contentful": "^0.0.15"
+    "gatsby-theme-contentful": "^0.0.16"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
@@ -147,8 +180,6 @@ title: Title of post
 description: Description of post
 date: Date post is written (Ex. 2020-02-07) (Not Required)
 categories: ['react', 'node'] (Not currently rendered but in progress)
-showBanner: true (shows the image in post)
-banner: './images/hero.jpg'
 published: true
 ---
 ```

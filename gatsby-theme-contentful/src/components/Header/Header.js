@@ -135,18 +135,17 @@ const Header = ({
         ) : null}
 
         <div>
-          {isAuthenticated && isAuthApp ? (
-            <React.Fragment>
-              <HeaderButton
-                aria-owns={open ? 'menu-appbar' : undefined}
-                onClick={handleMenu}
-              >
-                <FontAwesomeIcon
-                  icon={faUserCircle}
-                  className={classes.foregroundColor}
-                />
-              </HeaderButton>
-
+          <React.Fragment>
+            <HeaderButton
+              aria-owns={open ? 'menu-appbar' : undefined}
+              onClick={handleMenu}
+            >
+              <FontAwesomeIcon
+                icon={faUserCircle}
+                className={classes.foregroundColor}
+              />
+            </HeaderButton>
+            {isAuthenticated && isAuthApp ? (
               <UserMenu
                 anchorEl={anchorEl}
                 open={open}
@@ -154,16 +153,17 @@ const Header = ({
                 logout={logout}
                 isAuthenticated={isAuthenticated}
               />
-            </React.Fragment>
-          ) : null}
-          {!isAuthenticated && isAuthApp ? (
-            <Button
-              onClick={() => loginWithRedirect({})}
-              className={classes.foregroundColor}
-            >
-              {loginDesc}
-            </Button>
-          ) : null}
+            ) : (
+              <UserMenu
+                anchorEl={anchorEl}
+                open={open}
+                handleClose={handleClose}
+                login={() => loginWithRedirect({})}
+                isAuthenticated={isAuthenticated}
+                loginLabel={loginDesc}
+              />
+            )}
+          </React.Fragment>
         </div>
       </SimpleAppBar>
     </Headroom>
