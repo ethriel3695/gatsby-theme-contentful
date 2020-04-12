@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/ethriel3695/gatsby-theme-contentful.git"
   },
-  "version": "0.0.17",
+  "version": "0.0.18",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -63,6 +63,7 @@
     "google-map-react": "^1.1.4",
     "history": "^4.10.1",
     "lodash.merge": "^4.6.2",
+    "moment": "^2.24.0",
     "react-google-maps": "^9.4.5",
     "react-headroom": "^3.0.0",
     "react-helmet": "^5.2.1",
