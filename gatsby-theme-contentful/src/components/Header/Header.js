@@ -14,6 +14,17 @@ import UserMenu from '../Menu/UserMenu';
 import NavigationList from '../Menu/NavigationList';
 import { useSiteMetadata } from '../../hooks/siteMetadata';
 import { useBrandData } from '../../hooks/brandData';
+import useIsIOS from '../../utils/useIsIOS';
+import SimpleDialogDemo from '../Modal/Modal';
+
+const isBrowser = typeof window !== 'undefined';
+
+let deferredPrompt;
+if (isBrowser) {
+  window.addEventListener('beforeinstallprompt', event => {
+    deferredPrompt = event;
+  });
+}
 
 const useStyles = makeStyles({
   grow: {
@@ -48,6 +59,7 @@ const Header = ({
   const [anchorEl, setAnchorEl] = useState(null);
   const [left, setLeft] = useState(false);
   const open = Boolean(anchorEl);
+  const { prompt } = useIsIOS();
 
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
@@ -58,12 +70,25 @@ const Header = ({
   }
 
   function toogleDrawer() {
+    deferredPrompt && handleInstallEvent();
     if (left) {
       setLeft(false);
     } else {
       setLeft(true);
     }
   }
+
+  const handleInstallEvent = () => {
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then(choiceResult => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+    });
+  };
 
   const { loginDesc, title, isAuthApp, newsletterTitle } = useSiteMetadata();
   const data = useBrandData();
@@ -93,6 +118,9 @@ const Header = ({
   }
   return (
     <Headroom>
+      {prompt && ((isAuthenticated && isAuthApp) || !isAuthApp) && (
+        <SimpleDialogDemo />
+      )}
       <SimpleAppBar className={'appHeader'}>
         {(isAuthenticated && isAuthApp) || !isAuthApp ? (
           <HeaderButton
