@@ -6,7 +6,7 @@ import Header from './Header/Header';
 import Footer from './Footer';
 
 const isBrowser = typeof window !== 'undefined';
-if (isBrowser) {
+if (isBrowser && Notification) {
   Notification.requestPermission(function(status) {
     console.log('Notification permission status:', status);
   });
