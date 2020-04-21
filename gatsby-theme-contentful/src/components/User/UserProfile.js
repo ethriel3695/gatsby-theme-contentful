@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -20,12 +21,30 @@ import CardAvatar from '../Card/CardAvatar.js';
 
 import styles from '../../../assets/jss/material-dashboard-pro-react/views/userProfileStyles.js';
 
-// import avatar from '../../../assets/img/faces/mark.jpg';
+import { useAuth0 } from '../../react-auth0-spa';
 
 const useStyles = makeStyles(styles);
 
 export default function UserProfile() {
   const classes = useStyles();
+  const { loading, user } = useAuth0();
+  const [userData, setUserData] = useState();
+  console.log(user);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://c418zumrs8.execute-api.us-west-2.amazonaws.com/Dev/compare-yourself/auth0|5e7d2492bc90b30c6645abbd`,
+      )
+      .then(res => {
+        setUserData(res.data);
+      });
+  }, []);
+
+  if (loading || !user || !userData) {
+    return <div>Loading...</div>;
+  }
+  console.log(userData);
   return (
     <div>
       <GridContainer>
@@ -38,22 +57,11 @@ export default function UserProfile() {
             </CardHeader>
             <CardBody>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={5}>
+                <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
-                    labelText="Company (disabled)"
-                    id="company-disabled"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      disabled: true,
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={3}>
-                  <CustomInput
-                    labelText="Username"
-                    id="username"
+                    labelText="Full Name"
+                    id="full-name"
+                    value={user.name}
                     formControlProps={{
                       fullWidth: true,
                     }}
@@ -63,26 +71,17 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="Email address"
                     id="email-address"
+                    value={user.email}
                     formControlProps={{
                       fullWidth: true,
                     }}
                   />
                 </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
-                    labelText="First Name"
-                    id="first-name"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Last Name"
-                    id="last-name"
+                    labelText="Birthday"
+                    id="birthday"
+                    value={userData.user_metadata.birthday}
                     formControlProps={{
                       fullWidth: true,
                     }}
@@ -91,27 +90,40 @@ export default function UserProfile() {
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
+                  <CustomInput
+                    labelText="Address"
+                    id="address"
+                    value={userData.user_metadata.address}
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={3}>
                   <CustomInput
                     labelText="City"
                     id="city"
+                    value={userData.user_metadata.city}
                     formControlProps={{
                       fullWidth: true,
                     }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
+                <GridItem xs={12} sm={12} md={2}>
                   <CustomInput
-                    labelText="Country"
-                    id="country"
+                    labelText="State"
+                    id="state"
+                    value={userData.user_metadata.state}
                     formControlProps={{
                       fullWidth: true,
                     }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
+                <GridItem xs={12} sm={12} md={3}>
                   <CustomInput
                     labelText="Postal Code"
                     id="postal-code"
+                    value={userData.user_metadata.zip}
                     formControlProps={{
                       fullWidth: true,
                     }}
@@ -120,16 +132,23 @@ export default function UserProfile() {
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
-                  <InputLabel style={{ color: '#AAAAAA' }}>About me</InputLabel>
+                  <InputLabel
+                    style={{
+                      color: '#AAAAAA',
+                    }}
+                  >
+                    About me
+                  </InputLabel>
                   <CustomInput
-                    labelText="Please tell us a little about yourself!"
+                    labelText="Who are you?"
                     id="about-me"
+                    value={userData.user_metadata.aboutMe}
                     formControlProps={{
                       fullWidth: true,
                     }}
                     inputProps={{
                       multiline: true,
-                      rows: 5,
+                      rows: 3,
                     }}
                   />
                 </GridItem>
@@ -145,19 +164,15 @@ export default function UserProfile() {
           <Card profile>
             <CardAvatar profile>
               <a href="#pablo" onClick={e => e.preventDefault()}>
-                {/*<img src={avatar} alt="..." />*/}
+                <img src={user.picture} alt="Profile" />
               </a>
             </CardAvatar>
             <CardBody profile>
-              <h6 className={classes.cardCategory}>CTO / TECH-FOUNDER</h6>
-              <h4 className={classes.cardTitle}>Reuben Ellis</h4>
+              <h6 className={classes.cardCategory}>User Role</h6>
+              <h4 className={classes.cardTitle}>{user.name}</h4>
               <p className={classes.description}>
-                Don{"'"}t be scared of the truth because we need to restart the
-                human foundation in truth And I love you like Kanye loves Kanye!
+                {userData.user_metadata.aboutMe}
               </p>
-              <Button color="rose" round>
-                Follow
-              </Button>
             </CardBody>
           </Card>
         </GridItem>

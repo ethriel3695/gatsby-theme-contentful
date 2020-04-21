@@ -3,7 +3,8 @@
   "workspaces": [
     "gatsby-theme-contentful",
     "demo",
-    "one-thousand-eyes"
+    "one-thousand-eyes",
+    "fluffball-house-call"
   ],
   "dependencies": {}
 }

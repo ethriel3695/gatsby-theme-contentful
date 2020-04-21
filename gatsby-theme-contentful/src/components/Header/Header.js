@@ -183,16 +183,7 @@ const Header = ({
                 logout={logout}
                 isAuthenticated={isAuthenticated}
               />
-            ) : (
-              <UserMenu
-                anchorEl={anchorEl}
-                open={open}
-                handleClose={handleClose}
-                login={() => loginWithRedirect({})}
-                isAuthenticated={isAuthenticated}
-                loginLabel={loginDesc}
-              />
-            )}
+            ) : null}
           </React.Fragment>
         </div>
       </SimpleAppBar>

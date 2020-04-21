@@ -22,6 +22,7 @@ export default function CustomInput(props) {
     id,
     labelProps,
     inputProps,
+    value,
     error,
     white,
     inputRootCustomClasses,
@@ -77,6 +78,7 @@ export default function CustomInput(props) {
           disabled: classes.disabled,
           underline: underlineClasses,
         }}
+        value={value}
         id={id}
         {...inputProps}
       />
