@@ -165,17 +165,18 @@ const Header = ({
         ) : null}
 
         <div>
-          <React.Fragment>
-            <HeaderButton
-              aria-owns={open ? 'menu-appbar' : undefined}
-              onClick={handleMenu}
-            >
-              <FontAwesomeIcon
-                icon={faUserCircle}
-                className={classes.foregroundColor}
-              />
-            </HeaderButton>
-            {isAuthenticated && isAuthApp ? (
+          {isAuthenticated && isAuthApp ? (
+            <React.Fragment>
+              <HeaderButton
+                aria-owns={open ? 'menu-appbar' : undefined}
+                onClick={handleMenu}
+              >
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  className={classes.foregroundColor}
+                />
+              </HeaderButton>
+
               <UserMenu
                 anchorEl={anchorEl}
                 open={open}
@@ -183,8 +184,8 @@ const Header = ({
                 logout={logout}
                 isAuthenticated={isAuthenticated}
               />
-            ) : null}
-          </React.Fragment>
+            </React.Fragment>
+          ) : null}
         </div>
       </SimpleAppBar>
     </Headroom>
