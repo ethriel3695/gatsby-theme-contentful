@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import moment from 'moment';
 
+const isBrowser = typeof window !== 'undefined';
+
 function checkForIOS() {
   if (navigator.standalone) {
     return false;
@@ -10,7 +12,7 @@ function checkForIOS() {
   const lastPromptDays = moment.unix(lastPrompt);
   const days = moment(today).diff(lastPromptDays, 'days');
 
-  const ua = window.navigator.userAgent;
+  const ua = isBrowser && window.navigator.userAgent;
   const webkit = !!ua.match(/WebKit/i);
   const isIPad = !!ua.match(/iPad/i);
   const isIPhone = !!ua.match(/iPhone/i);
@@ -19,7 +21,7 @@ function checkForIOS() {
 
   const prompt = (isNaN(days) || days > 30) && isIOS && isSafari;
 
-  if (prompt && 'localStorage' in window) {
+  if (prompt && isBrowser && 'localStorage' in window) {
     localStorage.setItem('installPrompt', today);
   }
 

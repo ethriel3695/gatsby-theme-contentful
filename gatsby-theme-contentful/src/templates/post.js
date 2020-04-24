@@ -12,9 +12,7 @@ const onRedirectCallback = appState => {
   history.push(
     appState && appState.targetUrl
       ? appState.targetUrl
-      : isBrowser
-      ? window.location.pathname
-      : '/',
+      : isBrowser && window.location.pathname,
   );
 };
 

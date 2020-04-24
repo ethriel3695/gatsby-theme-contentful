@@ -11,7 +11,7 @@ const onRedirectCallback = appState => {
   navigate(
     appState && appState.targetUrl
       ? appState.targetUrl
-      : window.location.pathname,
+      : isBrowser && window.location.pathname,
   );
 };
 
