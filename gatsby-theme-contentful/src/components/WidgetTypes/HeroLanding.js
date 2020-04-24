@@ -25,20 +25,7 @@ const HeroLanding = ({ page }) => {
                         />
                       </div>
                     </Grid>
-                  ) : null
-                  // <Grid item xs={12} key={`textContainer`}>
-                  //   <Typography
-                  //     component="h1"
-                  //     variant="h2"
-                  //     align="center"
-                  //     color="inherit"
-                  //     gutterBottom
-                  //     style={{ padding: 20 }}
-                  //   >
-                  //     {page.title}
-                  //   </Typography>
-                  // </Grid>
-                  }
+                  ) : null}
                   <Grid item xs={12} key={`titleContainer`}>
                     <Typography
                       key={`${sect.title}`}
