@@ -18,7 +18,11 @@ export default function AuthContainer({
       return;
     }
     const fn = async () => {
-      await loginWithRedirect({});
+      try {
+        await loginWithRedirect({});
+      } catch (e) {
+        console.log(e);
+      }
     };
     fn();
   }, [loading, isAuthenticated, loginWithRedirect]);
