@@ -4,7 +4,6 @@ import Image from 'gatsby-image';
 import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import Button from '@material-ui/core/Button';
 import Headroom from 'react-headroom';
 import HeaderText from '../Text/TypographyH6';
 import SimpleAppBar from './SimpleAppBar';
@@ -52,7 +51,6 @@ const useStyles = makeStyles({
 
 const Header = ({
   isAuthenticated = false,
-  loginWithRedirect = false,
   logout = false,
   newsletter = undefined,
 }) => {
@@ -165,17 +163,17 @@ const Header = ({
         ) : null}
 
         <div>
-          <React.Fragment>
-            <HeaderButton
-              aria-owns={open ? 'menu-appbar' : undefined}
-              onClick={handleMenu}
-            >
-              <FontAwesomeIcon
-                icon={faUserCircle}
-                className={classes.foregroundColor}
-              />
-            </HeaderButton>
-            {isAuthenticated && isAuthApp ? (
+          {isAuthenticated && isAuthApp ? (
+            <React.Fragment>
+              <HeaderButton
+                aria-owns={open ? 'menu-appbar' : undefined}
+                onClick={handleMenu}
+              >
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  className={classes.foregroundColor}
+                />
+              </HeaderButton>
               <UserMenu
                 anchorEl={anchorEl}
                 open={open}
@@ -183,8 +181,8 @@ const Header = ({
                 logout={logout}
                 isAuthenticated={isAuthenticated}
               />
-            ) : null}
-          </React.Fragment>
+            </React.Fragment>
+          ) : null}
         </div>
       </SimpleAppBar>
     </Headroom>

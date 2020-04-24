@@ -6,8 +6,8 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 export const SectionWidget = ({ sections }) => {
   return (
     <div>
-      {sections.map(section => (
-        <div key={`session-${section.slug}`}>
+      {sections.map((section, index) => (
+        <div key={`session-${index}`}>
           <h2>{section.title}</h2>
           <div
             style={{
@@ -32,35 +32,36 @@ export const SectionWidget = ({ sections }) => {
               // }
             )}
           </div>
-          {section.item.map((sec, index) => (
-            <Button
-              key={`${sec.title}-${index}`}
-              variant="contained"
-              style={{
-                backgroundColor: '#040DAF',
-                marginRight: '5px',
-                marginBottom: '5px',
-              }}
-            >
-              {sec.link ? (
-                <a
-                  href={sec.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: 'none', color: '#eee' }}
-                >
-                  {sec.title}
-                </a>
-              ) : (
-                <Link
-                  to={`/${sec.slug}`}
-                  style={{ textDecoration: 'none', color: '#eee' }}
-                >
-                  {sec.title}
-                </Link>
-              )}
-            </Button>
-          ))}
+          {section.item &&
+            section.item.map((sec, index) => (
+              <Button
+                key={`${sec.title}-${index}`}
+                variant="contained"
+                style={{
+                  backgroundColor: '#040DAF',
+                  marginRight: '5px',
+                  marginBottom: '5px',
+                }}
+              >
+                {sec.link ? (
+                  <a
+                    href={sec.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: 'none', color: '#eee' }}
+                  >
+                    {sec.title}
+                  </a>
+                ) : (
+                  <Link
+                    to={`/${sec.slug}`}
+                    style={{ textDecoration: 'none', color: '#eee' }}
+                  >
+                    {sec.title}
+                  </Link>
+                )}
+              </Button>
+            ))}
         </div>
       ))}
     </div>
