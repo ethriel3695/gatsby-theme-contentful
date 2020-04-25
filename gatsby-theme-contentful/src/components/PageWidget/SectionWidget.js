@@ -32,36 +32,35 @@ export const SectionWidget = ({ sections }) => {
               // }
             )}
           </div>
-          {section.item &&
-            section.item.map((sec, index) => (
-              <Button
-                key={`${sec.title}-${index}`}
-                variant="contained"
-                style={{
-                  backgroundColor: '#040DAF',
-                  marginRight: '5px',
-                  marginBottom: '5px',
-                }}
-              >
-                {sec.link ? (
-                  <a
-                    href={sec.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: 'none', color: '#eee' }}
-                  >
-                    {sec.title}
-                  </a>
-                ) : (
-                  <Link
-                    to={`/${sec.slug}`}
-                    style={{ textDecoration: 'none', color: '#eee' }}
-                  >
-                    {sec.title}
-                  </Link>
-                )}
-              </Button>
-            ))}
+          {section.item.map((sec, index) => (
+            <Button
+              key={`${sec.title}-${index}`}
+              variant="contained"
+              style={{
+                backgroundColor: '#040DAF',
+                marginRight: '5px',
+                marginBottom: '5px',
+              }}
+            >
+              {sec.link ? (
+                <a
+                  href={sec.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none', color: '#eee' }}
+                >
+                  {sec.title}
+                </a>
+              ) : (
+                <Link
+                  to={`/${sec.slug}`}
+                  style={{ textDecoration: 'none', color: '#eee' }}
+                >
+                  {sec.title}
+                </Link>
+              )}
+            </Button>
+          ))}
         </div>
       ))}
     </div>
