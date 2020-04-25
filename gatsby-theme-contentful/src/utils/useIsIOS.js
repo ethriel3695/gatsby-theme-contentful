@@ -17,9 +17,10 @@ function checkForIOS() {
   const isIOS = isIPad || isIPhone;
   const isSafari = isIOS && webkit && !ua.match(/CriOS/i);
 
+  const isBrowser = typeof window !== 'undefined';
   const prompt = (isNaN(days) || days > 30) && isIOS && isSafari;
 
-  if (prompt && 'localStorage' in window) {
+  if (prompt && isBrowser && 'localStorage' in window) {
     localStorage.setItem('installPrompt', today);
   }
 

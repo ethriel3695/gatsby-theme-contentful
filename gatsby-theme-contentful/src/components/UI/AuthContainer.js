@@ -18,7 +18,11 @@ export default function AuthContainer({
       return;
     }
     const fn = async () => {
-      await loginWithRedirect({});
+      try {
+        await loginWithRedirect({});
+      } catch (e) {
+        console.log(e);
+      }
     };
     fn();
   }, [loading, isAuthenticated, loginWithRedirect]);
@@ -32,7 +36,6 @@ export default function AuthContainer({
       isAuthApp={isAuthApp}
       slugs={slugs}
       isAuthenticated={isAuthenticated}
-      loginWithRedirect={loginWithRedirect}
       logout={logout}
     >
       <SEO title="Home" />

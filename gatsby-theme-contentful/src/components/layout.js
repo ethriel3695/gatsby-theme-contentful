@@ -12,7 +12,7 @@ if (isBrowser && 'Notification' in window) {
   });
 
   function displayNotification() {
-    if (Notification.permission == 'granted') {
+    if (Notification.permission === 'granted') {
       navigator.serviceWorker.getRegistration().then(function(reg) {
         var options = {
           body: 'Here is a notification body!',
@@ -22,7 +22,7 @@ if (isBrowser && 'Notification' in window) {
             primaryKey: 1,
           },
         };
-        reg.showNotification('Hello world!', options);
+        reg && reg.showNotification('Hello world!', options);
       });
     }
   }
