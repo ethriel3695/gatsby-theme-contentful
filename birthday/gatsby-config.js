@@ -13,7 +13,7 @@ module.exports = {
     copyright: `Copyright © 2020 Reuben Ellis LLC`,
     loginDesc: '',
     newsletterTitle: '',
-    isAuthApp: true,
+    isAuthApp: false,
     social: {
       facebook: 'https://www.facebook.com/jessica.fessler.7',
       github: 'https://www.github.com/ethriel3695',
