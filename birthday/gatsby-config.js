@@ -16,8 +16,9 @@ module.exports = {
     isAuthApp: false,
     social: {
       facebook: 'https://www.facebook.com/jessica.fessler.7',
+      twitter: '',
       github: 'https://www.github.com/ethriel3695',
-      email: 'test@example.com',
+      email: '',
     },
     externalLinks: [{ label: '', link: '' }],
   },

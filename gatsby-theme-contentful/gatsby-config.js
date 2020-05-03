@@ -20,9 +20,9 @@ module.exports = ({
       isAuthApp: false,
       newsletterTitle: '',
       social: {
-        facebook: 'altcampus',
-        twitter: 'altcampus',
-        github: 'ethriel3695',
+        facebook: 'https://www.facebook.com/altcampus',
+        twitter: 'https://www.twitter.com/altcampus',
+        github: 'https://www.github.com/ethriel3695',
         email: 'test@example.com',
       },
       externalLinks: [{ label: '', link: '' }],
