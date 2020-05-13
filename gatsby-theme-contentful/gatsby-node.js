@@ -48,47 +48,6 @@ exports.onCreateNode = ({ node, getNode }, settings) => {
   if (node.internal.type !== 'MarkdownRemark') return;
   console.log('PLUGIN', node.fields.slug);
 };
-
-// TODO: Make is so images in contentful can be optional
-
-// exports.createSchemaCustomization = ({ actions }) => {
-//   const { createTypes } = actions;
-
-//   createTypes(`
-//     type ContentfulSection implements Node {
-//       image: File @fileByRelativePath
-//     }
-//   `);
-// };
-
-// exports.createResolvers = ({
-//   actions,
-//   cache,
-//   createNodeId,
-//   createResolvers,
-//   store,
-//   reporter,
-// }) => {
-//   const { createNode } = actions;
-//   createResolvers({
-//     ContentfulSection: {
-//       imageFile: {
-//         type: `File`,
-//         resolve(source, args, context, info) {
-//           return createRemoteFileNode({
-//             url: source.url,
-//             store,
-//             cache,
-//             createNode,
-//             createNodeId,
-//             reporter,
-//           });
-//         },
-//       },
-//     },
-//   });
-// };
-
 // Query for nav and create pages
 exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   const { createPage } = actions;
@@ -118,7 +77,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         relativeDirectory: { eq: "logo" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 250) {
+          fluid(maxWidth: 350) {
             base64
             tracedSVG
             aspectRatio
@@ -142,32 +101,10 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
       }
       allContentfulPage {
         nodes {
+          id
           title
           pageType
           slug
-          section {
-            id
-            order
-            title
-            image {
-              description
-              fluid(maxWidth: 1904) {
-                src
-                srcSet
-                srcSetWebp
-                sizes
-              }
-            }
-            description {
-              json
-            }
-            item {
-              title
-              subHeader
-              link
-              slug
-            }
-          }
         }
       }
     }
@@ -182,7 +119,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   const {
     site: { siteMetadata },
     brandLogo,
-    hero,
     newsletter,
   } = result.data;
   const posts = result.data.allMdx.nodes;
@@ -202,6 +138,9 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   // Generate a page from each Contentful "Page" Content Model
   pages.forEach(page => {
     const slug = page.slug;
+    if (!slug) {
+      return false;
+    }
     createPage({
       path: slug,
       component: require.resolve(PageTemplate),
@@ -217,6 +156,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         isAuthApp,
         slug,
         page,
+        pageId: page.id,
       },
     });
   });
@@ -224,7 +164,9 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   // Create a page for each Article from "mdx"
   posts.forEach(post => {
     const slug = post.frontmatter.slug;
-    const showBanner = post.frontmatter.showBanner;
+    if (!slug) {
+      return false;
+    }
     createPage({
       path: slug,
       component: require.resolve(PostTemplate),

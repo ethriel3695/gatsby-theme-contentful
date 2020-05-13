@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { navigate } from 'gatsby';
+import { navigate, graphql } from 'gatsby';
 import WidgetHandler from '../components/WidgetHandler';
 import { Auth0Provider } from '../react-auth0-spa';
 import AuthContainer from '../components/UI/AuthContainer';
@@ -15,7 +15,11 @@ const onRedirectCallback = appState => {
   );
 };
 
-const PageTemplate = ({ pageContext }) => {
+export default function PageTemplate({
+  pageContext,
+  data: { allContentfulPage: page },
+}) {
+  const pageData = page.nodes[0];
   const { isAuthApp } = pageContext;
   return (
     <Fragment>
@@ -33,7 +37,7 @@ const PageTemplate = ({ pageContext }) => {
             loginOption={pageContext.loginOption}
             isAuthApp={pageContext.isAuthApp}
           >
-            <WidgetHandler pageContext={pageContext} />
+            <WidgetHandler pageContext={pageContext} page={pageData} />
           </AuthContainer>
         </Auth0Provider>
       ) : (
@@ -45,10 +49,45 @@ const PageTemplate = ({ pageContext }) => {
           loginOption={pageContext.loginOption}
           isAuthApp={pageContext.isAuthApp}
         >
-          <WidgetHandler pageContext={pageContext} />
+          <WidgetHandler pageContext={pageContext} page={pageData} />
         </NoAuthContainer>
       )}
     </Fragment>
   );
-};
-export default PageTemplate;
+}
+
+export const query = graphql`
+  query ThemeDefaultPageQuery($pageId: String) {
+    allContentfulPage(filter: { id: { eq: $pageId } }) {
+      nodes {
+        id
+        title
+        slug
+        pageType
+        section {
+          title
+          description {
+            json
+          }
+          image {
+            description
+            fluid(maxWidth: 1904) {
+              src
+              srcSet
+              srcSetWebp
+              sizes
+            }
+          }
+          slug
+          order
+          item {
+            title
+            subHeader
+            link
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
