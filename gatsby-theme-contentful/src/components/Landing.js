@@ -2,8 +2,8 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { SectionWidget } from './PageWidget/SectionWidget';
 
-export default function Landing({ pageContext }) {
-  const { siteTitle, siteDescription, siteGreeting, page } = pageContext;
+export default function Landing({ pageContext, page }) {
+  const { siteTitle, siteDescription, siteGreeting } = pageContext;
   let pageDetails = null;
   const data = page.section;
   pageDetails = (
