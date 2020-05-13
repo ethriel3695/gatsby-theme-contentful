@@ -2,9 +2,7 @@
   "private": true,
   "workspaces": [
     "gatsby-theme-contentful",
-    "demo",
-    "one-thousand-eyes",
-    "birthday"
+    "demo"
   ],
   "dependencies": {}
 }

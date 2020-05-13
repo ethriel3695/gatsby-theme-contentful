@@ -4,8 +4,7 @@ import HeroLanding from './WidgetTypes/HeroLanding';
 import NormalLanding from './WidgetTypes/NormalLanding';
 import Landing from './Landing';
 
-export default function WidgetHandler({ pageContext }) {
-  const { page } = pageContext;
+export default function WidgetHandler({ pageContext, page }) {
   let PageComponent = null;
   switch (page.pageType) {
     case 'Landing':
