@@ -5,7 +5,7 @@ import About from '../About/About';
 
 const HeroLanding = ({ page }) => {
   return (
-    <div>
+    <div className="bg-gray-0 py-12 lg:py-16">
       <div>
         <div>
           {page.section.map((sect, index) => {

@@ -1,0 +1,38 @@
+@tailwind base;
+
+html body {
+    @apply .bg-white .font-sans .antialiased;
+}
+
+@tailwind components;
+
+.socialLink {
+    cursor: pointer;
+    font-size: 25px;
+    margin: 1rem 1rem;
+    text-decoration: none;
+
+    @apply text-teal-500;
+}
+
+.socialLink:hover {
+    @apply text-teal-700;
+}
+
+@tailwind utilities;
+
+.container {
+    @apply .max-w-screen-xl .mx-auto .px-4;
+}
+
+@screen md {
+    .container {
+        @apply .px-6;
+    }
+}
+
+@screen lg {
+    .container {
+        @apply .px-8;
+    }
+}

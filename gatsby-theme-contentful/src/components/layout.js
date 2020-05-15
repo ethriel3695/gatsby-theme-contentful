@@ -1,7 +1,6 @@
 import React from 'react';
-import { css, Global } from '@emotion/core';
-import { Layout as StyledLayout, Main } from 'theme-ui';
-import './layout.css';
+// import './layout.css';
+import '../styles/style.css';
 import Header from './Header/Header';
 import Footer from './Footer';
 
@@ -31,18 +30,11 @@ if (isBrowser && 'Notification' in window) {
 
 const Layout = ({ children, ...props }) => {
   return (
-    <StyledLayout>
-      <Global
-        styles={css`
-          body {
-            margin: 0;
-          }
-        `}
-      />
+    <>
       <Header {...props} />
-      <Main style={{ marginBottom: '30px' }}>{children}</Main>
+      {children}
       <Footer {...props} />
-    </StyledLayout>
+    </>
   );
 };
 
