@@ -2,14 +2,14 @@ import React from 'react';
 
 import HeroLanding from './WidgetTypes/HeroLanding';
 import NormalLanding from './WidgetTypes/NormalLanding';
-import Landing from './Landing';
+// import Landing from './Landing';
 
 export default function WidgetHandler({ pageContext, page }) {
   let PageComponent = null;
   switch (page.pageType) {
-    case 'Landing':
-      PageComponent = <Landing pageContext={pageContext} page={page} />;
-      break;
+    // case 'Landing':
+    //   PageComponent = <Landing pageContext={pageContext} page={page} />;
+    //   break;
     case 'HeroLanding':
       PageComponent = <HeroLanding page={page} />;
       break;

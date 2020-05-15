@@ -16,12 +16,12 @@ export default function PostContainer({ data, frontmatter }) {
               style={{ height: '70vh', textAlign: 'center' }}
             />
           ) : null}
-          <h1 style={{ textAlign: 'center' }}>{title}</h1>
-          <div style={{ textAlign: 'center' }}>
+          <h1 className="text-3xl text-center">{title}</h1>
+          <div className="text-md text-center">
             <span>{date}</span>
           </div>
         </header>
-        <div style={{ textAlign: 'justify', padding: 20 }}>
+        <div className="text-justify p-3">
           <MDXRenderer>{data}</MDXRenderer>
         </div>
       </article>

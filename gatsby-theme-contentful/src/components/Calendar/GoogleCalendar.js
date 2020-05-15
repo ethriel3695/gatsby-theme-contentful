@@ -1,21 +1,8 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  p4: {
-    padding: '24px',
-  },
-}));
 
 export default function GoogleCalendar() {
-  const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div calssName="flex flex-col align-center">
       <iframe
         src={process.env.GATSBY_GOOGLE_CALENDAR_URL}
         style={{ border: 0, frameborder: 0, scrolling: 'no' }}

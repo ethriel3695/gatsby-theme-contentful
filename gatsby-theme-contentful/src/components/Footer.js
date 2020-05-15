@@ -9,7 +9,6 @@ import {
 import { useExternalLinks } from '../hooks/externalLinks';
 import { useSiteMetadata } from '../hooks/siteMetadata';
 import { useSocialInfo } from '../hooks/socialInfo';
-import Grid from '@material-ui/core/Grid';
 
 export default function Footer() {
   const { copyright } = useSiteMetadata();
@@ -32,21 +31,15 @@ export default function Footer() {
 
   if (social.length > 0) {
     SocialContainer = (
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <div
-          style={{
-            textAlign: 'center',
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
-        >
+      <div className="flex justify-center">
+        <div className="flex text-center justify-between">
           {social.map((soc, index) => (
             <a
               key={index}
               href={`${soc.link}/`}
               target="_blank"
               rel="noopener noreferrer"
-              className={'socialLink'}
+              className={'socialLink text-3xl'}
             >
               <FontAwesomeIcon
                 icon={soc.icon}
@@ -59,17 +52,10 @@ export default function Footer() {
     );
   }
   return (
-    <footer>
-      <Grid container>
+    <footer className="mt-12">
+      <div>
         {links.map((link, index) => (
-          <Grid
-            key={`container-${index}`}
-            style={{ textAlign: 'center' }}
-            item
-            xs={12}
-            md={6}
-            lg={4}
-          >
+          <div key={`container-${index}`} className="text-center">
             <a
               key={index}
               href={`${link.link}`}
@@ -79,15 +65,15 @@ export default function Footer() {
             >
               {`${link.label}`}
             </a>
-          </Grid>
+          </div>
         ))}
-      </Grid>
+      </div>
       {SocialContainer}
-      <Grid container mt={10}>
-        <Grid item>
-          <div style={{ textAlign: 'justify', padding: 10 }}>{copyright} </div>
-        </Grid>
-      </Grid>
+      <div>
+        <div>
+          <div className="text-center p-5">{copyright} </div>
+        </div>
+      </div>
     </footer>
   );
 }

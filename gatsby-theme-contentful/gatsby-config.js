@@ -98,10 +98,8 @@ module.exports = ({
         },
       },
       'gatsby-transformer-sharp',
-      'gatsby-plugin-emotion',
-      'gatsby-plugin-theme-ui',
-      'gatsby-plugin-material-ui',
       'gatsby-plugin-react-helmet',
+      `gatsby-plugin-postcss`,
       {
         resolve: `gatsby-plugin-manifest`,
         options: {

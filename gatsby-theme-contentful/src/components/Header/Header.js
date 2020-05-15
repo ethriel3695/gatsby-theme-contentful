@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
-import { makeStyles } from '@material-ui/core/styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { FaBars } from 'react-icons/fa';
 import Headroom from 'react-headroom';
-import HeaderText from '../Text/TypographyH6';
-import SimpleAppBar from './SimpleAppBar';
-import HeaderButton from '../Button/HeaderButton';
-import SwipeDrawer from '../Menu/SwipeDrawer';
-import UserMenu from '../Menu/UserMenu';
-import NavigationList from '../Menu/NavigationList';
+// import HeaderText from '../Text/TypographyH6';
+// import SimpleAppBar from './SimpleAppBar';
+// import HeaderButton from '../Button/HeaderButton';
+// import SwipeDrawer from '../Menu/SwipeDrawer';
+// import UserMenu from '../Menu/UserMenu';
+// import NavigationList from '../Menu/NavigationList';
 import { useSiteMetadata } from '../../hooks/siteMetadata';
 import { useBrandData } from '../../hooks/brandData';
 import useIsIOS from '../../utils/useIsIOS';
-import SimpleDialogDemo from '../Modal/Modal';
+// import Transition from './Transition.js';
+import MenuMobile from '../Menu/MenuMobile';
+// import SimpleDialogDemo from '../Modal/Modal';
+import { useSlugList } from '../../hooks/slugList';
+import { buildNav } from '../../utils/buildNav';
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -25,56 +27,13 @@ if (isBrowser) {
   });
 }
 
-const useStyles = makeStyles({
-  grow: {
-    flexGrow: 1,
-    textAlign: 'center',
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  plainLink: {
-    color: '#eee',
-    textDecoration: 'none',
-    fontSize: '28px',
-  },
-  foregroundColor: {
-    color: '#eee',
-  },
-  brandLogoClass: {
-    width: '250px',
-    height: '45px',
-    margin: '5px',
-  },
-});
-
 const Header = ({
   isAuthenticated = false,
   logout = false,
   newsletter = undefined,
 }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [left, setLeft] = useState(false);
-  const open = Boolean(anchorEl);
+  const [isOpen, setIsOpen] = useState(false);
   const { prompt } = useIsIOS();
-
-  function handleMenu(event) {
-    setAnchorEl(event.currentTarget);
-  }
-
-  function handleClose() {
-    setAnchorEl(null);
-  }
-
-  function toogleDrawer() {
-    deferredPrompt && handleInstallEvent();
-    if (left) {
-      setLeft(false);
-    } else {
-      setLeft(true);
-    }
-  }
 
   const handleInstallEvent = () => {
     if (deferredPrompt) {
@@ -92,11 +51,15 @@ const Header = ({
 
   const { loginDesc, title, isAuthApp, newsletterTitle } = useSiteMetadata();
   const data = useBrandData();
+  const navList = useSlugList();
+  let navs = [];
+  if (navList) {
+    navs = buildNav(navList);
+  }
   let brandLogo = false;
   if (data) {
     brandLogo = data.brandLogo;
   }
-  const classes = useStyles();
   const alt = `This is the logo and return to home button for the site`;
   let logo = null;
   let BrandContainer = null;
@@ -104,88 +67,47 @@ const Header = ({
   if (brandLogo) {
     if (!brandLogo.childImageSharp && brandLogo.extension === 'svg') {
       logo = brandLogo.publicURL;
-      BrandContainer = (
-        <img className={classes.brandLogoClass} src={logo} alt={alt} />
-      );
+      BrandContainer = <img src={logo} className="w-12 md:w-24" alt={alt} />;
     } else {
       logo = brandLogo.childImageSharp.fluid;
       BrandContainer = (
-        <Image className={classes.brandLogoClass} fluid={logo} alt={alt} />
+        <Image fluid={logo} className="w-12 md:w-24" alt={alt} />
       );
     }
   } else {
     brandLogo = false;
   }
   return (
-    <Headroom>
-      {prompt && ((isAuthenticated && isAuthApp) || !isAuthApp) && (
-        <SimpleDialogDemo />
-      )}
-      <SimpleAppBar className={'appHeader'}>
-        {(isAuthenticated && isAuthApp) || !isAuthApp ? (
-          <HeaderButton
-            className={classes.menuButton}
-            aria-label="Menu"
-            aria-owns={left ? 'menu-sidebar' : undefined}
-            onClick={toogleDrawer}
-          >
-            <FontAwesomeIcon
-              icon={faBars}
-              className={classes.foregroundColor}
-            />
-          </HeaderButton>
-        ) : null}
-        <HeaderText className={classes.grow}>
-          <Link to="/" className={classes.plainLink}>
-            {brandLogo && BrandContainer}
-            {title && !brandLogo && title}
-          </Link>
-        </HeaderText>
-        {(isAuthenticated && isAuthApp) || !isAuthApp ? (
-          <SwipeDrawer left={left} handleClose={toogleDrawer}>
-            <NavigationList />
-          </SwipeDrawer>
-        ) : null}
-        {newsletter ? (
-          <React.Fragment>
-            <a
-              href={`${newsletter.publicURL}`}
-              className={classes.plainLink}
-              style={{ paddingRight: '15px' }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <HeaderText className={classes.grow}>
-                {`${newsletterTitle}`}
-              </HeaderText>
-            </a>
-          </React.Fragment>
-        ) : null}
+    <div className="container pt-6 pb-6 md:pt-6">
+      <div className="flex justify-between items-center">
+        <Link to="/">{BrandContainer}</Link>
 
-        <div>
-          {isAuthenticated && isAuthApp ? (
-            <React.Fragment>
-              <HeaderButton
-                aria-owns={open ? 'menu-appbar' : undefined}
-                onClick={handleMenu}
+        <button
+          className="sm:hidden"
+          onClick={() => setIsOpen(true)}
+          aria-label="Open Menu"
+        >
+          <FaBars className="h-6 w-auto text-gray-900 fill-current -mt-1" />
+        </button>
+        {(isAuthenticated && isAuthApp) || !isAuthApp ? (
+          <div className="hidden sm:block">
+            {navs.map((nav, key) => (
+              <Link
+                key={`menu_desktop_link${key}`}
+                className="ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent text-gray-700 hover:text-gray-800 hover:border-teal-500 transition duration-150 ease-in-out"
+                activeClassName="border-teal-500 text-gray-900 hover:border-teal-500"
+                to={nav.route}
               >
-                <FontAwesomeIcon
-                  icon={faUserCircle}
-                  className={classes.foregroundColor}
-                />
-              </HeaderButton>
-              <UserMenu
-                anchorEl={anchorEl}
-                open={open}
-                handleClose={handleClose}
-                logout={logout}
-                isAuthenticated={isAuthenticated}
-              />
-            </React.Fragment>
-          ) : null}
-        </div>
-      </SimpleAppBar>
-    </Headroom>
+                {nav.label}
+              </Link>
+            ))}
+          </div>
+        ) : null}
+      </div>
+      {(isAuthenticated && isAuthApp) || !isAuthApp ? (
+        <MenuMobile isOpen={isOpen} setIsOpen={setIsOpen} navs={navs} />
+      ) : null}
+    </div>
   );
 };
 
