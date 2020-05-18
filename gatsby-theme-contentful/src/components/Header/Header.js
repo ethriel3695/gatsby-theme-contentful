@@ -20,19 +20,27 @@ import { buildNav } from '../../utils/buildNav';
 
 const isBrowser = typeof window !== 'undefined';
 
-let deferredPrompt;
-if (isBrowser) {
-  window.addEventListener('beforeinstallprompt', event => {
-    deferredPrompt = event;
-  });
-}
-
 const Header = ({
   isAuthenticated = false,
   logout = false,
   newsletter = undefined,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const {
+    loginDesc,
+    title,
+    isAuthApp,
+    newsletterTitle,
+    hasNotifications,
+  } = useSiteMetadata();
+
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', event => {
+    deferredPrompt = event;
+  });
+
   const { prompt } = useIsIOS();
 
   const handleInstallEvent = () => {
@@ -49,7 +57,12 @@ const Header = ({
     }
   };
 
-  const { loginDesc, title, isAuthApp, newsletterTitle } = useSiteMetadata();
+  // if (isBrowser && hasNotifications && 'Notification' in window) {
+  //   Notification.requestPermission(function(status) {
+  //     console.log('Notification permission status:', status);
+  //   });
+  // }
+
   const data = useBrandData();
   const navList = useSlugList();
   let navs = [];
@@ -84,29 +97,26 @@ const Header = ({
 
         <button
           className="sm:hidden"
-          onClick={() => setIsOpen(true)}
+          onClick={(() => setIsOpen(true), handleInstallEvent())}
           aria-label="Open Menu"
         >
           <FaBars className="h-6 w-auto text-gray-900 fill-current -mt-1" />
         </button>
-        {(isAuthenticated && isAuthApp) || !isAuthApp ? (
-          <div className="hidden sm:block">
-            {navs.map((nav, key) => (
-              <Link
-                key={`menu_desktop_link${key}`}
-                className="ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent text-gray-700 hover:text-gray-800 hover:border-teal-500 transition duration-150 ease-in-out"
-                activeClassName="border-teal-500 text-gray-900 hover:border-teal-500"
-                to={nav.route}
-              >
-                {nav.label}
-              </Link>
-            ))}
-          </div>
-        ) : null}
+
+        <div className="hidden sm:block">
+          {navs.map((nav, key) => (
+            <Link
+              key={`menu_desktop_link${key}`}
+              className="ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent text-gray-700 hover:text-gray-800 hover:border-teal-500 transition duration-150 ease-in-out"
+              activeClassName="border-teal-500 text-gray-900 hover:border-teal-500"
+              to={nav.route}
+            >
+              {nav.label}
+            </Link>
+          ))}
+        </div>
       </div>
-      {(isAuthenticated && isAuthApp) || !isAuthApp ? (
-        <MenuMobile isOpen={isOpen} setIsOpen={setIsOpen} navs={navs} />
-      ) : null}
+      <MenuMobile isOpen={isOpen} setIsOpen={setIsOpen} navs={navs} />
     </div>
   );
 };

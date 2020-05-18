@@ -26,6 +26,7 @@ module.exports = ({
         email: 'test@example.com',
       },
       externalLinks: [{ label: '', link: '' }],
+      hasNotifications: false,
     },
     plugins: [
       mdx && {
@@ -51,6 +52,7 @@ module.exports = ({
           remarkPlugins: [require(`remark-slug`)],
         },
       },
+      'gatsby-plugin-postcss',
       {
         resolve: `gatsby-source-filesystem`,
         options: {
@@ -99,7 +101,6 @@ module.exports = ({
       },
       'gatsby-transformer-sharp',
       'gatsby-plugin-react-helmet',
-      `gatsby-plugin-postcss`,
       {
         resolve: `gatsby-plugin-manifest`,
         options: {

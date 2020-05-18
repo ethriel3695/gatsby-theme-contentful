@@ -138,7 +138,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   // Generate a page from each Contentful "Page" Content Model
   pages.forEach(page => {
     const slug = page.slug;
-    if (!slug) {
+    if (!slug || slug === '/placeholder-content') {
       return false;
     }
     createPage({
@@ -201,6 +201,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         rules: [
           {
             test: /auth0-js/,
+            use: loaders.null(),
+          },
+          {
+            test: /auth0-spa-js/,
             use: loaders.null(),
           },
           {
