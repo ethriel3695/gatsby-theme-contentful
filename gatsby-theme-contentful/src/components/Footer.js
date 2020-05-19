@@ -61,7 +61,7 @@ export default function Footer() {
               href={`${link.link}`}
               target="_blank"
               rel="noopener noreferrer"
-              className={'externalLink'}
+              className={'externalLink no-underline'}
             >
               {`${link.label}`}
             </a>

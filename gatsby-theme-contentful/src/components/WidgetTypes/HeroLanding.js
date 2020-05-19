@@ -1,47 +1,74 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
-import { Grid } from '@material-ui/core';
-import About from '../About/About';
+import { Link } from 'gatsby';
+import Image from 'gatsby-image';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+// import TextOnlyCard from '../Card/TextOnlyCard';
+import Button from '../Button/Button';
 
 const HeroLanding = ({ page }) => {
   return (
-    <div className="bg-gray-0 py-12 lg:py-16">
+    <div className="bg-gray-0">
       <div>
         <div>
           {page.section.map((sect, index) => {
             return (
               <div key={index}>
-                <Grid container>
-                  {sect.image ? (
-                    <Grid item xs={12} key={`heroContainer`}>
-                      <div style={{ width: '100%' }}>
-                        <img
-                          style={{ maxWidth: '100%', maxHeight: '100%' }}
-                          key={`${index}-key`}
-                          src={sect.image.fluid.src}
-                          srcSet={sect.image.fluid.srcSet}
-                          sizes={sect.image.fluid.sizes}
-                          alt={sect.image.description}
-                        />
-                      </div>
-                    </Grid>
-                  ) : null}
-                  <Grid item xs={12} key={`titleContainer`}>
-                    <Typography
-                      key={`${sect.title}`}
-                      variant="h5"
-                      align="center"
-                      color="inherit"
-                      paragraph
-                      style={{ padding: 20 }}
-                    >
-                      {sect.title}
-                    </Typography>
-                  </Grid>
-                  <div style={{ marginTop: '20px' }}>
-                    <About />
+                {sect.image ? (
+                  <div className="max-w-full">
+                    <Image fluid={sect.image.fluid} />
                   </div>
-                </Grid>
+                ) : null}
+                <div className="container">
+                  <div
+                    className="text-center text-4xl p-12"
+                    key={`${sect.title}`}
+                  >
+                    {sect.title}
+                  </div>
+                  {sect.description && (
+                    <div className="text-lg text-gray-800 text-center mb-2">
+                      {documentToReactComponents(
+                        sect.description.json
+                        // , {
+                        // renderNode: {
+                        //   [BLOCKS.EMBEDDED_ASSET]: (node, children) => (
+                        //     <img
+                        //       src={`${node.data.target.fields.file['en-US'].url}?w=300`}
+                        //       src={node.data.target.fields.title['en-US']}
+                        //     />
+                        //   ),
+                        // },
+                        // }
+                      )}
+                    </div>
+                  )}
+                  <div className="text-center text-xl">
+                    {sect.item &&
+                      sect.item.map((sec, index) => {
+                        return (
+                          <Button key={`${sec.title}-${index}`}>
+                            {sec.link ? (
+                              <a
+                                className={' no-underline'}
+                                href={sec.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {sec.title}
+                              </a>
+                            ) : (
+                              <Link
+                                className={' no-underline'}
+                                to={`/${sec.slug}`}
+                              >
+                                {sec.title}
+                              </Link>
+                            )}
+                          </Button>
+                        );
+                      })}
+                  </div>
+                </div>
               </div>
             );
           })}

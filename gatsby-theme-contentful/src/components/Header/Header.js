@@ -57,6 +57,8 @@ const Header = ({
     }
   };
 
+  // handleInstallEvent();
+
   // if (isBrowser && hasNotifications && 'Notification' in window) {
   //   Notification.requestPermission(function(status) {
   //     console.log('Notification permission status:', status);
@@ -97,7 +99,7 @@ const Header = ({
 
         <button
           className="sm:hidden"
-          onClick={(() => setIsOpen(true), handleInstallEvent())}
+          onClick={() => setIsOpen(true)}
           aria-label="Open Menu"
         >
           <FaBars className="h-6 w-auto text-gray-900 fill-current -mt-1" />
@@ -107,7 +109,7 @@ const Header = ({
           {navs.map((nav, key) => (
             <Link
               key={`menu_desktop_link${key}`}
-              className="ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent text-gray-700 hover:text-gray-800 hover:border-teal-500 transition duration-150 ease-in-out"
+              className="ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent text-gray-700 hover:text-gray-800 hover:border-teal-500 transition duration-150 ease-in-out no-underline"
               activeClassName="border-teal-500 text-gray-900 hover:border-teal-500"
               to={nav.route}
             >

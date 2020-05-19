@@ -4,6 +4,50 @@ html body {
     @apply .bg-white .font-sans .antialiased;
 }
 
+h1 {
+    @apply text-2xl;
+
+    @apply font-bold;
+
+    @apply my-2;
+}
+
+h2 {
+    @apply text-2xl;
+
+    @apply font-semibold;
+
+    @apply my-2;
+}
+
+h3 {
+    @apply text-xl;
+
+    @apply font-semibold;
+
+    @apply my-2;
+}
+
+h4 {
+    @apply text-lg;
+
+    @apply font-semibold;
+
+    @apply my-2;
+}
+
+a {
+    @apply text-blue-600 underline;
+}
+
+p {
+    @apply my-3;
+}
+
+article {
+    @apply px-8;
+}
+
 @tailwind components;
 
 .socialLink {
@@ -35,4 +79,12 @@ html body {
     .container {
         @apply .px-8;
     }
+}
+
+.border-blue-600 {
+    border-color: rgb(4, 13, 175);
+}
+
+.bg-blue-600 {
+    border-color: rgb(4, 13, 175);
 }

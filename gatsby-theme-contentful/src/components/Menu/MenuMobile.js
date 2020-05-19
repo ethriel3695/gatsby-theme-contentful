@@ -37,7 +37,7 @@ const MenuMobile = ({ navs, isOpen, setIsOpen }) => {
               variants={menuItem}
             >
               <Link
-                className="font-semibold text-4xl text-gray-300"
+                className="font-semibold text-4xl text-gray-300 no-underline"
                 activeClassName="text-teal-400"
                 to={nav.route}
                 onClick={() => setIsOpen(false)}
