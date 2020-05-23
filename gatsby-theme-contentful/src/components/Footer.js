@@ -39,12 +39,9 @@ export default function Footer() {
               href={`${soc.link}/`}
               target="_blank"
               rel="noopener noreferrer"
-              className={'socialLink text-3xl'}
+              className={'m-4 textThemeColor no-underline text-3xl'}
             >
-              <FontAwesomeIcon
-                icon={soc.icon}
-                className={'fontAwesomeFooterIcon'}
-              />
+              <FontAwesomeIcon icon={soc.icon} className={'shadow-sm'} />
             </a>
           ))}
         </div>
@@ -61,7 +58,7 @@ export default function Footer() {
               href={`${link.link}`}
               target="_blank"
               rel="noopener noreferrer"
-              className={'externalLink no-underline'}
+              className={'m-4 text-xl textThemeColor no-underline'}
             >
               {`${link.label}`}
             </a>

@@ -19,14 +19,11 @@ const HeroLanding = ({ page }) => {
                   </div>
                 ) : null}
                 <div className="container">
-                  <div
-                    className="text-center text-4xl p-12"
-                    key={`${sect.title}`}
-                  >
+                  <h2 className="text-left p-8" key={`${sect.title}`}>
                     {sect.title}
-                  </div>
+                  </h2>
                   {sect.description && (
-                    <div className="text-lg text-gray-800 text-center mb-2">
+                    <p className="text-lg text-gray-800 text-left mb-2">
                       {documentToReactComponents(
                         sect.description.json
                         // , {
@@ -40,7 +37,7 @@ const HeroLanding = ({ page }) => {
                         // },
                         // }
                       )}
-                    </div>
+                    </p>
                   )}
                   <div className="text-center text-xl">
                     {sect.item &&

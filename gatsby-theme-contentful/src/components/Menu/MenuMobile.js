@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Overlay from './Overlay';
+import MobileNavItem from './MobileNavItem';
 
 const menuItem = {
   closed: {
@@ -36,14 +37,13 @@ const MenuMobile = ({ navs, isOpen, setIsOpen }) => {
               key={`menu_mobile_link${key}`}
               variants={menuItem}
             >
-              <Link
-                className="font-semibold text-4xl text-gray-300 no-underline"
-                activeClassName="text-teal-400"
+              <MobileNavItem
+                key={`menu_desktop_link${key}`}
                 to={nav.route}
                 onClick={() => setIsOpen(false)}
               >
                 {nav.label}
-              </Link>
+              </MobileNavItem>
             </motion.li>
           ))}
         </ul>

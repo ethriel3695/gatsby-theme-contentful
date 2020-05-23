@@ -11,7 +11,7 @@ const onRedirectCallback = appState => {
   navigate(
     appState && appState.targetUrl
       ? appState.targetUrl
-      : window.location.pathname,
+      : window.location.pathname
   );
 };
 
@@ -71,11 +71,8 @@ export const query = graphql`
           }
           image {
             description
-            fluid(maxWidth: 1904) {
-              src
-              srcSet
-              srcSetWebp
-              sizes
+            fluid(maxWidth: 1904, quality: 100) {
+              ...GatsbyContentfulFluid_noBase64
             }
           }
           slug

@@ -14,6 +14,7 @@ import { useBrandData } from '../../hooks/brandData';
 import useIsIOS from '../../utils/useIsIOS';
 // import Transition from './Transition.js';
 import MenuMobile from '../Menu/MenuMobile';
+import NavItem from '../Menu/NavItem';
 // import SimpleDialogDemo from '../Modal/Modal';
 import { useSlugList } from '../../hooks/slugList';
 import { buildNav } from '../../utils/buildNav';
@@ -36,10 +37,11 @@ const Header = ({
   } = useSiteMetadata();
 
   let deferredPrompt;
-
-  window.addEventListener('beforeinstallprompt', event => {
-    deferredPrompt = event;
-  });
+  if (isBrowser) {
+    window.addEventListener('beforeinstallprompt', event => {
+      deferredPrompt = event;
+    });
+  }
 
   const { prompt } = useIsIOS();
 
@@ -82,11 +84,11 @@ const Header = ({
   if (brandLogo) {
     if (!brandLogo.childImageSharp && brandLogo.extension === 'svg') {
       logo = brandLogo.publicURL;
-      BrandContainer = <img src={logo} className="w-12 md:w-24" alt={alt} />;
+      BrandContainer = <img src={logo} className="headerLogoSize" alt={alt} />;
     } else {
       logo = brandLogo.childImageSharp.fluid;
       BrandContainer = (
-        <Image fluid={logo} className="w-12 md:w-24" alt={alt} />
+        <Image fluid={logo} className="headerLogoSize" alt={alt} />
       );
     }
   } else {
@@ -107,14 +109,9 @@ const Header = ({
 
         <div className="hidden sm:block">
           {navs.map((nav, key) => (
-            <Link
-              key={`menu_desktop_link${key}`}
-              className="ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent text-gray-700 hover:text-gray-800 hover:border-teal-500 transition duration-150 ease-in-out no-underline"
-              activeClassName="border-teal-500 text-gray-900 hover:border-teal-500"
-              to={nav.route}
-            >
+            <NavItem key={`menu_desktop_link${key}`} to={nav.route}>
               {nav.label}
-            </Link>
+            </NavItem>
           ))}
         </div>
       </div>

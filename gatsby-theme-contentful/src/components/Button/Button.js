@@ -3,7 +3,7 @@ import React from 'react';
 
 const Button = ({ children, href, ...params }) => {
   const className =
-    'inline-block px-5 py-3 font-medium leading-snug border border-transparent text-base rounded-md text-white bg-teal-500 hover:bg-teal-600 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out';
+    'inline-block px-5 py-2 mr-1 sm:mb-1 font-medium leading-snug border border-transparent text-base rounded-md focus:outline-none focus:shadow-outline transition duration-150 ease-in-out bgThemeColor';
 
   if (href) {
     return (

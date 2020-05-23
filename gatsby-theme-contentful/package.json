@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/ethriel3695/gatsby-theme-contentful.git"
   },
-  "version": "0.0.72",
+  "version": "0.0.89",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -65,6 +65,7 @@
     "react-headroom": "^3.0.0",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.10.0",
+    "react-id-swiper": "^3.0.0",
     "react-moment": "^0.9.6",
     "react-swipeable-views": "^0.13.3",
     "react-swipeable-views-utils": "^0.13.3",
@@ -72,6 +73,7 @@
     "react-transition-group": "^4.4.1",
     "remark-slug": "^5.1.2",
     "rimraf": "^3.0.0",
+    "swiper": "^5.4.1",
     "tailwindcss": "^1.4.6"
   },
   "keywords": [
