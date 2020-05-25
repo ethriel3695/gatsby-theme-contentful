@@ -39,7 +39,7 @@ export default function Footer() {
               href={`${soc.link}/`}
               target="_blank"
               rel="noopener noreferrer"
-              className={'m-4 textThemeColor no-underline text-3xl'}
+              className={'m-4 textPrimary no-underline text-3xl'}
             >
               <FontAwesomeIcon icon={soc.icon} className={'shadow-sm'} />
             </a>
@@ -58,7 +58,7 @@ export default function Footer() {
               href={`${link.link}`}
               target="_blank"
               rel="noopener noreferrer"
-              className={'m-4 text-xl textThemeColor no-underline'}
+              className={'m-4 text-xl textPrimary no-underline'}
             >
               {`${link.label}`}
             </a>

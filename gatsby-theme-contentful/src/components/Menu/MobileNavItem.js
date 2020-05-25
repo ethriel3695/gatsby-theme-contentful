@@ -19,11 +19,7 @@ const MobileNavItem = ({ children, href, classes, ...params }) => {
     );
   } else {
     return (
-      <Link
-        className={classNames(className, classes)}
-        activeClassName="text-blue-800"
-        {...params}
-      >
+      <Link className={classNames(className, classes)} {...params}>
         {children}
       </Link>
     );

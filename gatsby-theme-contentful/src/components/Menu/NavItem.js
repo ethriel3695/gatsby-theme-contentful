@@ -3,9 +3,9 @@ import React from 'react';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
 
-const NavItem = ({ children, href, classes, activeClasses, ...params }) => {
+const NavItem = ({ children, href, classes, ...params }) => {
   const className =
-    'ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent text-gray-700 hover:text-gray-800 hover:border-blue-700 transition duration-150 ease-in-out no-underline';
+    'ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent text-gray-700 hover:text-gray-800 borderPrimary transition duration-150 ease-in-out no-underline';
 
   if (href) {
     return (
@@ -20,11 +20,7 @@ const NavItem = ({ children, href, classes, activeClasses, ...params }) => {
     );
   } else {
     return (
-      <Link
-        className={classNames(className, classes)}
-        activeClassName="border-blue-700 text-gray-900 hover:border-blue-700"
-        {...params}
-      >
+      <Link className={classNames(className, classes)} {...params}>
         {children}
       </Link>
     );

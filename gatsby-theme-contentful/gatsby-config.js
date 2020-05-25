@@ -8,6 +8,7 @@ module.exports = ({
   basePath = '/',
   assetPath = 'content/assets',
   mdx = true,
+  contentful = true,
 }) => {
   return {
     siteMetadata: {
@@ -18,6 +19,7 @@ module.exports = ({
       copyright: `This is to insert a copyright message`,
       loginDesc: 'Login / Signup',
       isAuthApp: false,
+      isContentful: contentful,
       newsletterTitle: '',
       social: {
         facebook: 'https://www.facebook.com/altcampus',
@@ -81,7 +83,7 @@ module.exports = ({
           defaultQuality: 75,
         },
       },
-      {
+      contentful && {
         resolve: 'gatsby-source-contentful',
         options: {
           spaceId: process.env.GATSBY_CONTENTFUL_SPACEID,
@@ -101,6 +103,21 @@ module.exports = ({
       },
       'gatsby-transformer-sharp',
       'gatsby-plugin-react-helmet',
+      {
+        resolve: `gatsby-plugin-prefetch-google-fonts`,
+        options: {
+          fonts: [
+            {
+              family: `Roboto Mono`,
+              variants: [`400`, `700`],
+            },
+            {
+              family: `Caveat`,
+              variants: [`400`, `700`],
+            },
+          ],
+        },
+      },
       {
         resolve: `gatsby-plugin-manifest`,
         options: {

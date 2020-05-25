@@ -24,30 +24,68 @@ const menuItem = {
   }),
 };
 
-const MenuMobile = ({ navs, isOpen, setIsOpen }) => {
+const MenuMobile = ({
+  navs,
+  isOpen,
+  setIsOpen,
+  login,
+  logout,
+  isAuthenticated,
+  isAuthApp,
+}) => {
   return (
     <Overlay isOpen={isOpen} setIsOpen={setIsOpen}>
-      <div className="container flex flex-col justify-center">
-        <ul className="text-center">
-          {navs.map((nav, key) => (
-            <motion.li
-              className="my-3"
-              animate={isOpen ? 'open' : 'closed'}
-              custom={key}
-              key={`menu_mobile_link${key}`}
-              variants={menuItem}
-            >
-              <MobileNavItem
-                key={`menu_desktop_link${key}`}
-                to={nav.route}
-                onClick={() => setIsOpen(false)}
+      {(isAuthenticated && isAuthApp) || !isAuthApp ? (
+        <div className="container flex flex-col justify-center">
+          <ul className="text-center">
+            {navs.map((nav, key) => (
+              <motion.li
+                className="my-3"
+                animate={isOpen ? 'open' : 'closed'}
+                custom={key}
+                key={`menu_mobile_link${key}`}
+                variants={menuItem}
               >
-                {nav.label}
-              </MobileNavItem>
-            </motion.li>
-          ))}
-        </ul>
-      </div>
+                <MobileNavItem
+                  key={`menu_desktop_link${key}`}
+                  to={nav.route}
+                  onClick={() => setIsOpen(false)}
+                  activeClassName="textPrimary"
+                >
+                  {nav.label}
+                </MobileNavItem>
+              </motion.li>
+            ))}
+            {isAuthApp && (
+              <motion.li>
+                <MobileNavItem
+                  key={`menu_logout`}
+                  activeClassName=""
+                  to={'/'}
+                  onClick={() => {
+                    logout();
+                  }}
+                >
+                  Logout
+                </MobileNavItem>
+              </motion.li>
+            )}
+          </ul>
+        </div>
+      ) : (
+        <motion.li>
+          <MobileNavItem
+            key={`menu_logout`}
+            activeClassName=""
+            to={'/'}
+            onClick={() => {
+              login();
+            }}
+          >
+            Login
+          </MobileNavItem>
+        </motion.li>
+      )}
     </Overlay>
   );
 };
