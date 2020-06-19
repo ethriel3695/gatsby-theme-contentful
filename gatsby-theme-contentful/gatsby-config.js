@@ -23,6 +23,7 @@ module.exports = ({
       newsletterTitle: '',
       social: {
         facebook: 'https://www.facebook.com/altcampus',
+        instagram: 'https://www.instagram.com/altcampus',
         twitter: 'https://www.twitter.com/altcampus',
         github: 'https://www.github.com/ethriel3695',
         email: 'test@example.com',
@@ -55,6 +56,14 @@ module.exports = ({
         },
       },
       'gatsby-plugin-postcss',
+      {
+        resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+        options: {
+          analyzerPort: 8888,
+          analyzerMode: 'server',
+          defaultSizes: 'gzip',
+        },
+      },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
@@ -99,6 +108,7 @@ module.exports = ({
           head: false,
           // enable ip anonymization
           anonymize: true,
+          defer: true,
         },
       },
       'gatsby-transformer-sharp',

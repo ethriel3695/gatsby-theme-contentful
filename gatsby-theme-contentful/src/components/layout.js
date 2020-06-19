@@ -9,6 +9,7 @@ const Layout = ({ children, ...props }) => {
     <>
       <Header {...props} />
       {children}
+      <hr className="mt-5 border-gray-800" />
       <Footer {...props} />
     </>
   );

@@ -14,7 +14,9 @@ export const useSlugList = () => {
       }
       allMdx(
         sort: { order: DESC, fields: [frontmatter___date] }
-        filter: { frontmatter: { published: { eq: true } } }
+        filter: {
+          frontmatter: { published: { eq: true }, categories: { nin: "blog" } }
+        }
       ) {
         nodes {
           id

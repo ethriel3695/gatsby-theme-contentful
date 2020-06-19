@@ -5,6 +5,7 @@ import {
   faFacebook,
   faTwitterSquare,
   faGithub,
+  faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 import { useExternalLinks } from '../hooks/externalLinks';
 import { useSiteMetadata } from '../hooks/siteMetadata';
@@ -12,13 +13,17 @@ import { useSocialInfo } from '../hooks/socialInfo';
 
 export default function Footer() {
   const { copyright } = useSiteMetadata();
-  const { email, facebook, twitter, github } = useSocialInfo();
+  const { email, facebook, twitter, github, instagram } = useSocialInfo();
   const links = useExternalLinks();
   let social = [];
   let SocialContainer = null;
   if (facebook !== '') {
     social.push({ icon: faFacebook, link: facebook });
   }
+  if (instagram !== '') {
+    social.push({ icon: faInstagram, link: instagram });
+  }
+
   if (twitter !== '') {
     social.push({ icon: faTwitterSquare, link: twitter });
   }
@@ -36,7 +41,7 @@ export default function Footer() {
           {social.map((soc, index) => (
             <a
               key={index}
-              href={`${soc.link}/`}
+              href={`${soc.link}`}
               target="_blank"
               rel="noopener noreferrer"
               className={'m-4 textPrimary no-underline text-3xl'}
@@ -49,7 +54,7 @@ export default function Footer() {
     );
   }
   return (
-    <footer className="mt-12">
+    <footer>
       <div>
         {links.map((link, index) => (
           <div key={`container-${index}`} className="text-center">

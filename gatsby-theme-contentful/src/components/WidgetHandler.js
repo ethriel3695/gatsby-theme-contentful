@@ -2,6 +2,7 @@ import React from 'react';
 
 import HeroLanding from './WidgetTypes/HeroLanding';
 import NormalLanding from './WidgetTypes/NormalLanding';
+import Blog from './WidgetTypes/Blog';
 import Landing from './Landing';
 
 export default function WidgetHandler({ pageContext, page }) {
@@ -15,6 +16,9 @@ export default function WidgetHandler({ pageContext, page }) {
       break;
     case 'NormalLanding':
       PageComponent = <NormalLanding page={page} />;
+      break;
+    case 'Blog':
+      PageComponent = <Blog />;
       break;
     default:
       PageComponent = <div>You have no content coming in!</div>;

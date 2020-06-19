@@ -11,7 +11,6 @@ let contentPath;
 let assetPath;
 
 // These templates are simply data-fetching wrappers that import components
-const HomeTemplate = require.resolve(`./src/templates/index`);
 const PostTemplate = require.resolve(`./src/templates/post`);
 const PageTemplate = require.resolve(`./src/templates/page.js`);
 

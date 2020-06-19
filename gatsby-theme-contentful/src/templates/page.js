@@ -36,6 +36,8 @@ export default function PageTemplate({
             copyright={pageContext.copyrightMessage}
             loginOption={pageContext.loginOption}
             isAuthApp={pageContext.isAuthApp}
+            title={pageData.title}
+            description={pageContext.siteDescription}
           >
             <WidgetHandler pageContext={pageContext} page={pageData} />
           </AuthContainer>
@@ -48,6 +50,8 @@ export default function PageTemplate({
           copyright={pageContext.copyrightMessage}
           loginOption={pageContext.loginOption}
           isAuthApp={pageContext.isAuthApp}
+          title={pageData.title}
+          description={pageContext.siteDescription}
         >
           <WidgetHandler pageContext={pageContext} page={pageData} />
         </NoAuthContainer>

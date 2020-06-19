@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'gatsby';
-import classNames from 'classnames';
 
-const NavItem = ({ children, href, classes, ...params }) => {
+const NavItem = ({ children, href, ...params }) => {
   const className =
     'ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent text-gray-700 hover:text-gray-800 borderPrimary transition duration-150 ease-in-out no-underline';
 
@@ -13,14 +12,15 @@ const NavItem = ({ children, href, classes, ...params }) => {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={classNames(className, classes)}
+        className={className}
+        {...params}
       >
         {children}
       </a>
     );
   } else {
     return (
-      <Link className={classNames(className, classes)} {...params}>
+      <Link className={className} {...params}>
         {children}
       </Link>
     );

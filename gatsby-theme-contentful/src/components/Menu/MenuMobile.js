@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Overlay from './Overlay';
-import MobileNavItem from './MobileNavItem';
+import NavItem from './NavItem';
 
 const menuItem = {
   closed: {
@@ -46,20 +46,22 @@ const MenuMobile = ({
                 key={`menu_mobile_link${key}`}
                 variants={menuItem}
               >
-                <MobileNavItem
+                <NavItem
                   key={`menu_desktop_link${key}`}
                   to={nav.route}
                   onClick={() => setIsOpen(false)}
+                  className="font-semibold text-4xl text-gray-300 no-underline"
                   activeClassName="textPrimary"
                 >
                   {nav.label}
-                </MobileNavItem>
+                </NavItem>
               </motion.li>
             ))}
             {isAuthApp && (
               <motion.li>
-                <MobileNavItem
+                <NavItem
                   key={`menu_logout`}
+                  className="font-semibold text-4xl text-gray-300 no-underline"
                   activeClassName=""
                   to={'/'}
                   onClick={() => {
@@ -67,15 +69,16 @@ const MenuMobile = ({
                   }}
                 >
                   Logout
-                </MobileNavItem>
+                </NavItem>
               </motion.li>
             )}
           </ul>
         </div>
       ) : (
         <motion.li>
-          <MobileNavItem
+          <NavItem
             key={`menu_logout`}
+            className="font-semibold text-4xl text-gray-300 no-underline"
             activeClassName=""
             to={'/'}
             onClick={() => {
@@ -83,7 +86,7 @@ const MenuMobile = ({
             }}
           >
             Login
-          </MobileNavItem>
+          </NavItem>
         </motion.li>
       )}
     </Overlay>
