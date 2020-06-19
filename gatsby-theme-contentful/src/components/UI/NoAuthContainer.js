@@ -12,6 +12,9 @@ export default function NoAuthContainer({
   isAuthApp,
   slugs,
   children,
+  title,
+  description,
+  categories = [],
 }) {
   return (
     <Layout
@@ -24,7 +27,7 @@ export default function NoAuthContainer({
       isAuthApp={isAuthApp}
       slugs={slugs}
     >
-      <SEO title="Landing" />
+      <SEO title={title} description={description} keywords={categories} />
       {children}
     </Layout>
   );

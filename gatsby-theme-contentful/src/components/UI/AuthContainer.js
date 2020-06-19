@@ -11,6 +11,9 @@ export default function AuthContainer({
   isAuthApp,
   slugs,
   children,
+  title,
+  description,
+  categories = [],
 }) {
   const { loading, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   useEffect(() => {
@@ -38,7 +41,7 @@ export default function AuthContainer({
       isAuthenticated={isAuthenticated}
       logout={logout}
     >
-      <SEO title="Home" />
+      <SEO title={title} description={description} keywords={categories} />
       {children}
     </Layout>
   );

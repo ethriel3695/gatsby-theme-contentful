@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Button from '../Button/Button';
 
 export const SectionWidget = ({ sections }) => {
   return (
     <div>
       {sections.map((section, index) => (
         <div key={`session-${index}`}>
-          <div className="text-center text-4xl p-4">{section.title}</div>
+          <div className="text-left text-3xl font-semibold py-4">
+            {section.title}
+          </div>
           <div
-            className="text-lg text-gray-800 text-center"
+            className="text-lg text-gray-800 text-left"
             style={{
               fontFamily: 'Roboto, Helvetica Arial sans-serif',
               fontWeight: 400,
@@ -33,13 +36,10 @@ export const SectionWidget = ({ sections }) => {
           </div>
           {section.item &&
             section.item.map((sec, index) => (
-              <div
-                key={`${sec.title}-${index}`}
-                className="mb-2 mr-2 bg-blue-700"
-              >
+              <Button key={`${sec.title}-${index}`}>
                 {sec.link ? (
                   <a
-                    className={'text-white hover:text-teal-700 no-underline'}
+                    className={'text-white no-underline'}
                     href={sec.link}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -48,13 +48,13 @@ export const SectionWidget = ({ sections }) => {
                   </a>
                 ) : (
                   <Link
-                    className={'text-white hover:text-teal-700 no-underline'}
+                    className={'text-white no-underline'}
                     to={`/${sec.slug}`}
                   >
                     {sec.title}
                   </Link>
                 )}
-              </div>
+              </Button>
             ))}
         </div>
       ))}

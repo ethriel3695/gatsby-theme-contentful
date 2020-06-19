@@ -8,6 +8,7 @@ module.exports = ({
   basePath = '/',
   assetPath = 'content/assets',
   mdx = true,
+  contentful = true,
 }) => {
   return {
     siteMetadata: {
@@ -18,14 +19,17 @@ module.exports = ({
       copyright: `This is to insert a copyright message`,
       loginDesc: 'Login / Signup',
       isAuthApp: false,
+      isContentful: contentful,
       newsletterTitle: '',
       social: {
         facebook: 'https://www.facebook.com/altcampus',
+        instagram: 'https://www.instagram.com/altcampus',
         twitter: 'https://www.twitter.com/altcampus',
         github: 'https://www.github.com/ethriel3695',
         email: 'test@example.com',
       },
       externalLinks: [{ label: '', link: '' }],
+      hasNotifications: false,
     },
     plugins: [
       mdx && {
@@ -49,6 +53,15 @@ module.exports = ({
             { resolve: `gatsby-remark-smartypants` },
           ],
           remarkPlugins: [require(`remark-slug`)],
+        },
+      },
+      'gatsby-plugin-postcss',
+      {
+        resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+        options: {
+          analyzerPort: 8888,
+          analyzerMode: 'server',
+          defaultSizes: 'gzip',
         },
       },
       {
@@ -79,7 +92,7 @@ module.exports = ({
           defaultQuality: 75,
         },
       },
-      {
+      contentful && {
         resolve: 'gatsby-source-contentful',
         options: {
           spaceId: process.env.GATSBY_CONTENTFUL_SPACEID,
@@ -95,11 +108,26 @@ module.exports = ({
           head: false,
           // enable ip anonymization
           anonymize: true,
+          defer: true,
         },
       },
       'gatsby-transformer-sharp',
       'gatsby-plugin-react-helmet',
-      `gatsby-plugin-postcss`,
+      {
+        resolve: `gatsby-plugin-prefetch-google-fonts`,
+        options: {
+          fonts: [
+            {
+              family: `Roboto Mono`,
+              variants: [`400`, `700`],
+            },
+            {
+              family: `Caveat`,
+              variants: [`400`, `700`],
+            },
+          ],
+        },
+      },
       {
         resolve: `gatsby-plugin-manifest`,
         options: {

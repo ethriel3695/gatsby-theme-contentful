@@ -1,31 +1,30 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import Image from 'gatsby-image';
 import { SectionWidget } from './PageWidget/SectionWidget';
 
 export default function Landing({ pageContext, page }) {
   const { siteTitle, siteDescription, siteGreeting } = pageContext;
   let pageDetails = null;
   const data = page.section;
+  const hero = data[0].image ? (
+    <div className="max-w-full">
+      <Image fluid={data[0].image.fluid} />
+    </div>
+  ) : (
+    ''
+  );
   pageDetails = (
-    <div style={{ padding: 20 }}>
-      <Typography
-        component="h1"
-        variant="h2"
-        align="center"
-        color="inherit"
-        gutterBottom
-        style={{ padding: 20 }}
-      >
-        {siteTitle}
-      </Typography>
-      <Typography variant="h5" align="center" color="inherit" paragraph>
-        {siteDescription}
-      </Typography>
-      <Typography variant="subtitle1" align="left" color="inherit" paragraph>
-        {siteGreeting}
-      </Typography>
+    <div className="container">
+      <h1 className="text-center">{siteTitle}</h1>
+      <h3 className="text-center">{siteDescription}</h3>
+      <p className="text-left">{siteGreeting}</p>
       <SectionWidget sections={data} />
     </div>
   );
-  return <div>{pageDetails}</div>;
+  return (
+    <div>
+      {hero}
+      {pageDetails}
+    </div>
+  );
 }

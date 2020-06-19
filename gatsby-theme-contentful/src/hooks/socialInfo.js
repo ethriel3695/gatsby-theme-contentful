@@ -10,6 +10,7 @@ export const useSocialInfo = () => {
             twitter
             facebook
             github
+            instagram
           }
         }
       }

@@ -14,7 +14,7 @@ const onRedirectCallback = appState => {
       ? appState.targetUrl
       : isBrowser
       ? window.location.pathname
-      : '/',
+      : '/'
   );
 };
 
@@ -35,6 +35,9 @@ export default function Post({ pageContext, data: { mdx: post } }) {
             copyright={pageContext.copyrightMessage}
             loginOption={pageContext.loginOption}
             isAuthApp={pageContext.isAuthApp}
+            title={post.frontmatter.title}
+            description={post.frontmatter.description}
+            categories={post.frontmatter.categories}
           >
             <PostContainer data={post.body} frontmatter={post.frontmatter} />
           </AuthContainer>
@@ -47,6 +50,9 @@ export default function Post({ pageContext, data: { mdx: post } }) {
           copyright={pageContext.copyrightMessage}
           loginOption={pageContext.loginOption}
           isAuthApp={pageContext.isAuthApp}
+          title={post.frontmatter.title}
+          description={post.frontmatter.description}
+          categories={post.frontmatter.categories}
         >
           <PostContainer data={post.body} frontmatter={post.frontmatter} />
         </NoAuthContainer>
@@ -60,6 +66,8 @@ export const pageQuery = graphql`
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
+        description
+        categories
         date(formatString: "MMMM Do, YYYY")
       }
       body

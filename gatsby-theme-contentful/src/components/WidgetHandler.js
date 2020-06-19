@@ -2,19 +2,23 @@ import React from 'react';
 
 import HeroLanding from './WidgetTypes/HeroLanding';
 import NormalLanding from './WidgetTypes/NormalLanding';
-// import Landing from './Landing';
+import Blog from './WidgetTypes/Blog';
+import Landing from './Landing';
 
 export default function WidgetHandler({ pageContext, page }) {
   let PageComponent = null;
   switch (page.pageType) {
-    // case 'Landing':
-    //   PageComponent = <Landing pageContext={pageContext} page={page} />;
-    //   break;
+    case 'Landing':
+      PageComponent = <Landing pageContext={pageContext} page={page} />;
+      break;
     case 'HeroLanding':
       PageComponent = <HeroLanding page={page} />;
       break;
     case 'NormalLanding':
       PageComponent = <NormalLanding page={page} />;
+      break;
+    case 'Blog':
+      PageComponent = <Blog />;
       break;
     default:
       PageComponent = <div>You have no content coming in!</div>;
