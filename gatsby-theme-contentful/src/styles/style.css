@@ -1,7 +1,10 @@
 @tailwind base;
 
 html body {
-    @apply .bg-white .font-sans .antialiased;
+    @apply bg-white;
+    @apply font-serif;
+    @apply leading-loose;
+    @apply antialiased;
 }
 
 h1 {
@@ -53,7 +56,8 @@ h6 {
 }
 
 a {
-    @apply text-blue-600 underline;
+    @apply text-blue-600;
+    @apply underline;
 }
 
 p {

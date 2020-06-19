@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/ethriel3695/gatsby-theme-contentful.git"
   },
-  "version": "0.1.3",
+  "version": "0.1.9",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -46,6 +46,7 @@
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-sharp": "^2.3.5",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.10",
     "gatsby-remark-abbr": "^2.0.0",
     "gatsby-remark-code-titles": "^1.1.0",
     "gatsby-remark-copy-linked-files": "^2.1.31",
