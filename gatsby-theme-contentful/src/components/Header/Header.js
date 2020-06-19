@@ -4,7 +4,7 @@ import Image from 'gatsby-image';
 import { FaBars } from 'react-icons/fa';
 import { useSiteMetadata } from '../../hooks/siteMetadata';
 import { useBrandData } from '../../hooks/brandData';
-import useIsIOS from '../../utils/useIsIOS';
+// import useIsIOS from '../../utils/useIsIOS';
 import MenuMobile from '../Menu/MenuMobile';
 import NavItem from '../Menu/NavItem';
 import { useSlugList } from '../../hooks/slugList';
@@ -35,21 +35,21 @@ const Header = ({
     });
   }
 
-  const { prompt } = useIsIOS();
+  // const { prompt } = useIsIOS();
 
-  const handleInstallEvent = () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      deferredPrompt.userChoice.then(choiceResult => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-        } else {
-          console.log('User dismissed the install prompt');
-        }
-      });
-    }
-  };
+  // const handleInstallEvent = () => {
+  //   if (deferredPrompt) {
+  //     deferredPrompt.prompt();
+  //     // Wait for the user to respond to the prompt
+  //     deferredPrompt.userChoice.then(choiceResult => {
+  //       if (choiceResult.outcome === 'accepted') {
+  //         console.log('User accepted the install prompt');
+  //       } else {
+  //         console.log('User dismissed the install prompt');
+  //       }
+  //     });
+  //   }
+  // };
 
   // handleInstallEvent();
 
