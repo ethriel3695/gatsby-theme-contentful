@@ -1,17 +1,19 @@
 import React from 'react';
-// import './layout.css';
 import '../styles/style.css';
 import Header from './Header/Header';
 import Footer from './Footer';
 
 const Layout = ({ children, ...props }) => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header {...props} />
-      {children}
-      <hr className="mt-5 border-gray-800" />
+      <main className="flex-grow">{children}</main>
+      <hr
+        className="mt-12 border-top-2;
+"
+      />
       <Footer {...props} />
-    </>
+    </div>
   );
 };
 
