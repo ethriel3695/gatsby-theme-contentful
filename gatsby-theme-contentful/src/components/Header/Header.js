@@ -105,7 +105,7 @@ const Header = ({
                 <NavItem
                   key={`menu_desktop_link${key}`}
                   to={nav.route}
-                  activeClassName="borderPrimaryActive"
+                  activeClassName="border-primary-active"
                 >
                   {nav.label}
                 </NavItem>

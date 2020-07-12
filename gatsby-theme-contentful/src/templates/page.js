@@ -68,24 +68,35 @@ export const query = graphql`
         title
         slug
         pageType
-        section {
-          title
-          description {
-            json
-          }
-          image {
-            description
-            fluid(maxWidth: 1904, quality: 100) {
-              ...GatsbyContentfulFluid_noBase64
-            }
-          }
-          slug
-          order
-          item {
+        sections {
+          ... on ContentfulSection {
             title
-            subHeader
-            link
+            description {
+              json
+            }
+            image {
+              description
+              fluid(maxWidth: 1904, quality: 100) {
+                ...GatsbyContentfulFluid_noBase64
+              }
+            }
+            item {
+              title
+              subHeader
+              link
+              slug
+            }
+            order
             slug
+          }
+          ... on ContentfulCallToAction {
+            title
+            text {
+              text
+            }
+            slug
+            externalLink
+            buttonText
           }
         }
       }

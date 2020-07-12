@@ -7,16 +7,35 @@ export const usePageData = () => {
         nodes {
           title
           pageType
-          section {
-            id
-            order
-            slug
-            title
-            image {
-              description
-              fluid(maxWidth: 1920) {
-                ...GatsbyContentfulFluid_withWebp
+          sections {
+            ... on ContentfulSection {
+              title
+              description {
+                json
               }
+              image {
+                description
+                fluid(maxWidth: 1904, quality: 100) {
+                  ...GatsbyContentfulFluid_noBase64
+                }
+              }
+              item {
+                title
+                subHeader
+                link
+                slug
+              }
+              order
+              slug
+            }
+            ... on ContentfulCallToAction {
+              title
+              text {
+                text
+              }
+              slug
+              externalLink
+              buttonText
             }
           }
         }

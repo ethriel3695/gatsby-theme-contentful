@@ -1,23 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import TextFieldInput from '../Form/TextFieldInput';
-import Button from '@material-ui/core/Button';
+import Button from '../Button/Button';
 import ListComponent from '../List/ListComponent';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  p4: {
-    padding: '24px',
-  },
-}));
-
 export default function IssueForm() {
-  const classes = useStyles();
   const [feedback, setFeedback] = useState('');
   const [name, setName] = useState('');
   const [curiousity, setCuriousity] = useState('');
@@ -49,7 +36,7 @@ export default function IssueForm() {
     });
   }
   return (
-    <div className={classes.root}>
+    <div>
       <TextFieldInput
         id="name"
         label="Name"

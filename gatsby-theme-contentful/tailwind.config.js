@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./src/**/*.jsx', './src/**/*.js'],
+  purge: false,
   important: true,
   theme: {
     container: {
@@ -7,7 +7,6 @@ module.exports = {
       padding: '1.25rem',
     },
   },
-  // variants: ['responsive', 'group-hover', 'hover', 'focus', 'active'],
   variants: {
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
     display: ['responsive', 'hover', 'focus', 'last'],

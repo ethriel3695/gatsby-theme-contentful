@@ -9,7 +9,9 @@ const Blog = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 mt-20">
         {blog.allMdx.nodes &&
           blog.allMdx.nodes.map((article, index) => {
-            const date = new Date(article.frontmatter.date);
+            console.log(article.frontmatter.date);
+            const date =
+              article.frontmatter.date && new Date(article.frontmatter.date);
             return (
               <a
                 href={`${article.frontmatter.slug}`}
@@ -18,7 +20,7 @@ const Blog = () => {
               >
                 <h2>{article.frontmatter.title}</h2>
                 <p className="py-6">{article.frontmatter.description}</p>
-                <span>{`${date}`}</span>
+                <span>{`${date ? date : ''}`}</span>
                 <div className="grid grid-cols-3 lg:grid-cols-6">
                   {article.frontmatter.categories &&
                     article.frontmatter.categories.map(category => {

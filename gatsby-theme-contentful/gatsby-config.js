@@ -56,6 +56,20 @@ module.exports = ({
         },
       },
       'gatsby-plugin-postcss',
+      // {
+      //   resolve: 'gatsby-plugin-postcss',
+      //   options: {
+      //     postCssPlugins: [require('tailwindcss')],
+      //   },
+      // },
+      // {
+      //   resolve: 'gatsby-plugin-purgecss',
+      //   options: {
+      //     printRejected: true,
+      //     develop: false,
+      //     tailwind: true,
+      //   },
+      // },
       {
         resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
         options: {

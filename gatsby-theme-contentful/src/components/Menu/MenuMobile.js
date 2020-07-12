@@ -51,7 +51,7 @@ const MenuMobile = ({
                   to={nav.route}
                   onClick={() => setIsOpen(false)}
                   className="font-semibold text-4xl text-gray-300 no-underline"
-                  activeClassName="textPrimary"
+                  activeClassName="text-primary"
                 >
                   {nav.label}
                 </NavItem>

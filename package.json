@@ -3,7 +3,13 @@
   "workspaces": [
     "gatsby-theme-contentful",
     "demo",
-    "fluffball-house-call"
+    "fluffball-house-call",
+    "mulejs"
   ],
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
 }

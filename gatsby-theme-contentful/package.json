@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/ethriel3695/gatsby-theme-contentful.git"
   },
-  "version": "0.1.10",
+  "version": "0.1.11",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -14,6 +14,13 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/react": "^5.3.19",
+    "babel-loader": "^8.1.0",
+    "babel-preset-react-app": "^9.1.2",
     "eslint": "^6.8.0",
     "gatsby": "^2.19.12",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.10",
@@ -44,6 +51,7 @@
     "gatsby-plugin-offline": "^3.1.2",
     "gatsby-plugin-postcss": "^2.3.1",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
+    "gatsby-plugin-purgecss": "^5.0.0",
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-sharp": "^2.3.5",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.10",
@@ -76,5 +84,9 @@
     "gatsby",
     "gatsby-theme",
     "gatsby-plugin"
-  ]
+  ],
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
 }

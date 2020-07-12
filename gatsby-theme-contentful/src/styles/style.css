@@ -1,3 +1,4 @@
+/** purgecss start ignore */
 @tailwind base;
 
 html body {
@@ -74,33 +75,33 @@ ol {
 
 @tailwind components;
 
-.bgPrimary {
+.bg-primary {
     @apply text-white bg-blue-700;
 }
 
-.bgPrimary:hover {
+.bg-primary:hover {
     @apply bg-blue-800;
 }
 
-.textPrimary {
+.text-primary {
     @apply text-blue-700 !important;;
 }
 
-.textPrimary:hover {
+.text-primary:hover {
     @apply text-blue-800 !important;
 }
 
-.borderPrimary {
+.border-primary {
     @apply border-blue-700;
 
     @apply text-gray-900;
 }
 
-.borderPrimary:hover {
+.border-primary:hover {
     @apply border-blue-700;
 }
 
-.borderPrimaryActive {
+.border-primary-active {
     @apply border-blue-700 !important;
 
     @apply text-gray-900 !important;
@@ -110,7 +111,7 @@ ol {
     @apply .bg-white;
 }
 
-.headerLogoSize {
+.header-logo-size {
     width: 6rem;
 }
 
@@ -135,3 +136,4 @@ ol {
         @apply .px-8;
     }
 }
+/* purgecss end ignore */
