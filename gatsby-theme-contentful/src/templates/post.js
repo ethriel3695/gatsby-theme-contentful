@@ -68,7 +68,7 @@ export const pageQuery = graphql`
         title
         description
         categories
-        date(formatString: "MMMM Do, YYYY")
+        date(formatString: "dddd MMMM Do, YYYY")
       }
       body
     }

@@ -15,7 +15,7 @@ export const useBlogData = () => {
             title
             slug
             description
-            date
+            date(formatString: "dddd MMMM Do, YYYY")
             categories
           }
         }
