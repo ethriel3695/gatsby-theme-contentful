@@ -2,7 +2,6 @@ import React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 export default ({ children, className }) => {
-  console.log(className);
   const language = className.replace(/language-/, '');
   return (
     <Highlight
