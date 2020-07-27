@@ -89,17 +89,18 @@ export const query = graphql`
             order
             slug
           }
-          ... on ContentfulCallToAction {
-            title
-            text {
-              text
-            }
-            slug
-            externalLink
-            buttonText
-          }
         }
       }
     }
   }
 `;
+
+//   ... on ContentfulCallToAction {
+//   title
+//   text {
+//     text
+//   }
+//   slug
+//   externalLink
+//   buttonText
+// }

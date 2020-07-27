@@ -14,7 +14,7 @@ export default function NoAuthContainer({
   children,
   title,
   description,
-  categories = [],
+  categories,
 }) {
   return (
     <Layout

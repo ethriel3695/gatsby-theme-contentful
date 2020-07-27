@@ -19,13 +19,16 @@ function SEO({ description, lang, meta, keywords, title }) {
             title
             description
             author
+            categories
           }
         }
       }
-    `,
+    `
   );
 
   const metaDescription = description || site.siteMetadata.description;
+  const metaCategories =
+    (keywords && keywords.length > 0) || site.siteMetadata.categories || [];
 
   return (
     <Helmet
@@ -68,16 +71,7 @@ function SEO({ description, lang, meta, keywords, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
-            : [],
-        )
-        .concat(meta)}
+      ].concat(meta)}
     />
   );
 }
@@ -85,7 +79,6 @@ function SEO({ description, lang, meta, keywords, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  keywords: [],
 };
 
 SEO.propTypes = {

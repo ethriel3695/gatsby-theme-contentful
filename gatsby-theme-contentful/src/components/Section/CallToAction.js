@@ -3,8 +3,8 @@ import Button from '../Button/Button';
 
 export const CallToAction = ({ section }) => {
   return (
-    <div className="max-w-3xl m-auto p-8 mt-0 sm:mt-20">
-      <h2 className="text-center py-8" key={`what!`}>
+    <div className="max-w-3xl m-auto p-8">
+      <h2 className="text-center" key={`what!`}>
         {section.title}
       </h2>
       <p className="">{section.text.text}</p>
