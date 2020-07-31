@@ -1,4 +1,5 @@
 import React from 'react';
+import CardImage from '../Media/CardImage';
 
 function Card({ ...props }) {
   const { children } = props;
@@ -12,12 +13,7 @@ function Card({ ...props }) {
           key={`gallery-${index}`}
           className="p-3 md:p-6 shadow-lg rounded-md overflow-hidden"
         >
-          {gal.fluid && (
-            <Image
-              className="opacity-100 hover:opacity-75 cursor-pointer"
-              fluid={gal.fluid}
-            />
-          )}
+          {gal.fluid && <CardImage fluid={fluid} />}
           <h5>{gal.title}</h5>
           <div className="h-full lg:h-40">{gal.description}</div>
         </div>
@@ -26,12 +22,7 @@ function Card({ ...props }) {
           key={`gallery-${index}`}
           className="p-3 md:p-6 shadow-lg rounded-md overflow-hidden"
         >
-          {gal.fluid && (
-            <Image
-              className="opacity-100 hover:opacity-75 cursor-pointer"
-              fluid={gal.fluid}
-            />
-          )}
+          {gal.fluid && <CardImage fluid={fluid} />}
         </div>
       )}
     </div>

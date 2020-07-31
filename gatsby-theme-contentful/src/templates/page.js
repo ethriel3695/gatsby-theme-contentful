@@ -89,6 +89,24 @@ export const query = graphql`
             order
             slug
           }
+          ... on ContentfulGallery {
+            title
+            caption {
+              caption
+            }
+            subHeader
+            media {
+              title
+              caption
+              file {
+                title
+                description
+                fluid(maxWidth: 400, quality: 100) {
+                  ...GatsbyContentfulFluid_noBase64
+                }
+              }
+            }
+          }
         }
       }
     }
