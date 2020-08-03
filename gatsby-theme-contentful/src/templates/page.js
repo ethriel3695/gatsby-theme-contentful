@@ -74,27 +74,34 @@ export const query = graphql`
             description {
               json
             }
-            image {
+            subHeader {
+              subHeader
+            }
+          }
+          ... on ContentfulHero {
+            title
+            description {
+              json
+            }
+            subHeader {
+              subHeader
+            }
+            file {
               description
               fluid(maxWidth: 1904, quality: 100) {
                 ...GatsbyContentfulFluid_noBase64
               }
             }
-            item {
-              title
-              subHeader
-              link
-              slug
-            }
-            order
-            slug
           }
           ... on ContentfulGallery {
             title
-            caption {
-              caption
+            description {
+              json
             }
-            subHeader
+            subHeader {
+              subHeader
+            }
+            caption
             media {
               title
               caption
@@ -105,6 +112,47 @@ export const query = graphql`
                   ...GatsbyContentfulFluid_noBase64
                 }
               }
+            }
+          }
+          ... on ContentfulProducts {
+            title
+            description {
+              json
+            }
+            subHeader {
+              subHeader
+            }
+            product {
+              title
+              description {
+                description
+              }
+              price
+              files {
+                title
+                description
+                fluid(maxWidth: 400, quality: 100) {
+                  ...GatsbyContentfulFluid_noBase64
+                }
+              }
+            }
+          }
+          ... on ContentfulMultipleCallToAction {
+            title
+            description {
+              json
+            }
+            subHeader {
+              subHeader
+            }
+            callToAction {
+              title
+              text {
+                text
+              }
+              buttonText
+              externalLink
+              slug
             }
           }
         }

@@ -6,7 +6,7 @@ export const HeroSection = ({ section }) => {
   return (
     <div key={'section'}>
       <div className="max-w-full">
-        {section.image && <Image fluid={section.image.fluid} />}
+        {section.file && <Image fluid={section.file.fluid} />}
       </div>
       <div className="container">
         <h2 className="text-center py-8" key={`${section.title}`}>
