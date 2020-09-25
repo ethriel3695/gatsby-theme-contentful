@@ -7,7 +7,7 @@ const CardImage = ({ className, fluid, ...params }) => {
     <div>
       {fluid && (
         <Image
-          className={`${classNames} ${className}}`}
+          className={`${classNames} ${className}`}
           fluid={fluid}
           {...params}
         />

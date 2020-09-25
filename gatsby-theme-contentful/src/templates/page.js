@@ -78,6 +78,18 @@ export const query = graphql`
               subHeader
             }
           }
+          ... on ContentfulBlogSection {
+            title
+            articleSectionText {
+              json
+            }
+            file {
+              description
+              fluid(maxWidth: 1904, quality: 100) {
+                ...GatsbyContentfulFluid_noBase64
+              }
+            }
+          }
           ... on ContentfulHero {
             title
             description {
