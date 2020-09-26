@@ -4,7 +4,7 @@ export const useSlugList = () => {
   const data = useStaticQuery(graphql`
     query SlugList {
       allContentfulPage(
-        filter: { slug: { ne: "/placeholder-content" } }
+        filter: { slug: { regex: "/^(?!/blog/|/placeholder-content).*$/" } }
         sort: { order: ASC, fields: [slug] }
       ) {
         nodes {

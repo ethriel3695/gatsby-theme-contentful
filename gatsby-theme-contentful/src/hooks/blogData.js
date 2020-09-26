@@ -20,6 +20,20 @@ export const useBlogData = () => {
           }
         }
       }
+      allContentfulPage(
+        filter: { slug: { regex: "/blog//" } }
+        sort: { order: ASC, fields: [slug] }
+      ) {
+        nodes {
+          title
+          slug
+          description {
+            description
+          }
+          createdAt(formatString: "dddd MMMM Do, YYYY")
+          categories
+        }
+      }
     }
   `);
   return data;
