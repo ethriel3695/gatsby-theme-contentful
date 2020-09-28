@@ -160,13 +160,3 @@ export const query = graphql`
     }
   }
 `;
-
-//   ... on ContentfulCallToAction {
-//   title
-//   text {
-//     text
-//   }
-//   slug
-//   externalLink
-//   buttonText
-// }

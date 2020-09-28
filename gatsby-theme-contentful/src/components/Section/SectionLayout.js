@@ -1,11 +1,11 @@
 import React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 
 export const SectionLayout = ({
   section,
   children,
-  className,
+  className = '',
   isContainer = false,
 }) => {
   const { title, description, subHeader, caption } = section;
@@ -14,7 +14,7 @@ export const SectionLayout = ({
     <div className={isContainer ? `container ${className}` : ` ${className}`}>
       <h3>{title}</h3>
       {description && (
-        <div className="text-lg text-gray-800 mb-2">
+        <div className="text-lg text-gray-800 mb-2 text-left">
           {documentToReactComponents(description.json, {
             renderNode: {
               [BLOCKS.EMBEDDED_ASSET]: (node, children) => (

@@ -159,7 +159,7 @@ Also, in `gatsby-config.js` the `isAuthApp` key needs to be set to `true`
 
 | Key           | Default value                | Description                                                                                                 |
 | ------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `contentPath` | `/content/post`              | Directory for blog posts                                                                                    |
+| `contentPath` | `/content/post`              | Directory for article posts                                                                                 |
 | `assetPath`   | `/content/assets`            | Location of assets                                                                                          |
 | `logo`        | `/content/assets/logo`       | An image in the logo directory will replace the title in the header with a brand logo instead               |
 | `newsletter`  | `/content/assets/newsletter` | A pdf in this directory will provide a static asset for a newsletter with the newsletter link in the header |

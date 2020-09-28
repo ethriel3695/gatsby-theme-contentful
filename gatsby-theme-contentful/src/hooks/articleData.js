@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-export const useBlogData = () => {
+export const useArticleData = () => {
   const data = useStaticQuery(graphql`
     query DefaultBlogQuery {
       allMdx(
@@ -15,7 +15,8 @@ export const useBlogData = () => {
             title
             slug
             description
-            date(formatString: "dddd MMMM Do, YYYY")
+            date(formatString: "MMMM Do, YYYY")
+            author
             categories
           }
         }
@@ -30,7 +31,8 @@ export const useBlogData = () => {
           description {
             description
           }
-          createdAt(formatString: "dddd MMMM Do, YYYY")
+          createdAt(formatString: "MMMM Do, YYYY")
+          author
           categories
         }
       }
