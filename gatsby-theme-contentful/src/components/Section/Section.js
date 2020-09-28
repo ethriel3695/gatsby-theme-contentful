@@ -4,7 +4,6 @@ import { HeroSection } from './HeroSection';
 import { GallerySection } from './GallerySection';
 import { ProductSection } from './ProductSection';
 import { MultipleCTASection } from './MultipleCTASection';
-import { BlogSection } from './BlogSection';
 
 export default class Section extends React.Component {
   constructor(props) {
@@ -39,8 +38,6 @@ export default class Section extends React.Component {
         );
       case 'ContentfulSection':
         return <SectionLayout section={section} isContainer={true} />;
-      case 'ContentfulBlogSection':
-        return <BlogSection section={section} isContainer={true} />;
       default:
         return <div>You have no content coming in!</div>;
     }

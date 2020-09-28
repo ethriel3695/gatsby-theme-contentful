@@ -6,14 +6,11 @@ export const useContentful = () => {
       sections: allContentfulSection(sort: { fields: [order], order: ASC }) {
         nodes {
           title
-          slug
-          item {
-            title
-            link
-            slug
-          }
           description {
             json
+          }
+          subHeader {
+            subHeader
           }
         }
       }

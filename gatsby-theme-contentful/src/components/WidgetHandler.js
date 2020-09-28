@@ -2,7 +2,7 @@ import React from 'react';
 
 import HeroLanding from './WidgetTypes/HeroLanding';
 import NormalLanding from './WidgetTypes/NormalLanding';
-import Blog from './WidgetTypes/Blog';
+import ArticleSummary from './WidgetTypes/ArticleSummary';
 import Landing from './Landing';
 import ArticleContainer from './Post/ArticleContainer';
 
@@ -19,8 +19,8 @@ export default function WidgetHandler({ pageContext, page }) {
     case 'NormalLanding':
       PageComponent = <NormalLanding page={page} />;
       break;
-    case 'Blog':
-      PageComponent = <Blog />;
+    case 'ArticleSummary':
+      PageComponent = <ArticleSummary />;
       break;
     case 'Article':
       PageComponent = <ArticleContainer page={page} />;
