@@ -12,7 +12,6 @@ export default class Section extends React.Component {
 
   renderSection() {
     const section = this.props.section;
-    console.log(section);
     switch (this.props.section.__typename) {
       case 'ContentfulHero':
         return <HeroSection section={section} />;

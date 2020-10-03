@@ -9,11 +9,11 @@ export const HeroSection = ({ section }) => {
         {section.file && <Image fluid={section.file.fluid} />}
       </div>
       <div className="container">
-        <h2 className="text-center py-8" key={`${section.title}`}>
+        <h2 className="py-8" key={`${section.title}`}>
           {section.title}
         </h2>
         {section.description && (
-          <div className="text-lg text-gray-800 text-center mb-2">
+          <div className="text-lg text-gray-800 mb-2">
             {documentToReactComponents(
               section.description.json
               // , {

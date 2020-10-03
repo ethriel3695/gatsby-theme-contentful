@@ -9,7 +9,6 @@ export const SectionLayout = ({
   isContainer = false,
 }) => {
   const { title, description, subHeader, caption } = section;
-  console.log(section);
   return (
     <div className={isContainer ? `container ${className}` : ` ${className}`}>
       <h3>{title}</h3>

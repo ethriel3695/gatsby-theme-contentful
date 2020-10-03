@@ -76,11 +76,13 @@ const Header = ({
   if (brandLogo) {
     if (!brandLogo.childImageSharp && brandLogo.extension === 'svg') {
       logo = brandLogo.publicURL;
-      BrandContainer = <img src={logo} className="headerLogoSize" alt={alt} />;
+      BrandContainer = (
+        <img src={logo} className="header-logo-size" alt={alt} />
+      );
     } else {
       logo = brandLogo.childImageSharp.fluid;
       BrandContainer = (
-        <Image fluid={logo} className="headerLogoSize" alt={alt} />
+        <Image fluid={logo} className="header-logo-size" alt={alt} />
       );
     }
   } else {
