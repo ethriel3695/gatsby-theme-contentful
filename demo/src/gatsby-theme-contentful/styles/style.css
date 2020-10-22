@@ -1,0 +1,160 @@
+/** purgecss start ignore */
+@tailwind base;
+html body {
+    @apply font-serif;
+    @apply leading-loose;
+    @apply antialiased;
+
+}
+
+h1 {
+    @apply text-5xl;
+
+    @apply font-bold;
+
+    @apply my-2;
+}
+
+h2 {
+    @apply text-4xl;
+
+    @apply font-semibold;
+
+    @apply my-2;
+}
+
+h3 {
+    @apply text-3xl;
+
+    @apply font-semibold;
+
+    @apply my-2;
+}
+
+h4 {
+    @apply text-2xl;
+
+    @apply font-semibold;
+
+    @apply my-2;
+}
+
+h5 {
+    @apply text-xl;
+
+    @apply font-semibold;
+
+    @apply my-2;
+}
+
+h6 {
+    @apply text-lg;
+
+    @apply font-semibold;
+
+    @apply my-2;
+}
+
+a {
+    @apply text-blue-600;
+    @apply no-underline;
+}
+
+p {
+    @apply my-3;
+}
+
+article {
+    @apply px-4;
+}
+
+ol {
+    @apply list-decimal;
+    list-style-position: inside;
+}
+
+li p {
+    display: inline-block;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+h4 + ul {
+    @apply list-disc;
+}
+
+h5 + ul {
+    @apply list-disc;
+}
+
+@tailwind components;
+
+.bg-primary {
+    @apply bg-green-500;
+    @apply text-white;
+}
+
+.bg-primary a {
+    @apply text-white;
+}
+
+.bg-primary:hover {
+    @apply bg-green-600;
+}
+
+.text-primary {
+    @apply text-green-500 !important;;
+}
+
+.text-primary:hover {
+    @apply text-green-600 !important;
+}
+
+.border-primary {
+    @apply border-green-500;
+
+    @apply text-gray-900;
+}
+
+.border-primary:hover {
+    @apply border-green-600;
+}
+
+.border-primary-active {
+    @apply border-green-500 !important;
+
+    @apply text-gray-900 !important;
+}
+
+.swiper-pagination-bullet {
+    @apply .bg-white;
+}
+
+.header-logo-size {
+    width: 5rem;
+}
+
+@tailwind utilities;
+
+.container {
+    @apply .max-w-screen-lg .mx-auto .px-4;
+}
+
+@screen md {
+    .container {
+        @apply .px-6;
+    }
+
+    .swiper-pagination-bullet {
+        @apply .w-3 .h-3;
+    }
+}
+
+@screen lg {
+    .container {
+        @apply .px-8;
+    }
+}
+/* purgecss end ignore */

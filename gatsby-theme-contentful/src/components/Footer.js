@@ -14,7 +14,7 @@ import { useCTAData } from '../hooks/ctaData';
 import { CallToAction } from '../components/Section/CallToAction';
 
 export default function Footer() {
-  const { copyright } = useSiteMetadata();
+  const { copyright, hasCTA } = useSiteMetadata();
   const { email, facebook, twitter, github, instagram } = useSocialInfo();
   const links = useExternalLinks();
   const section = useCTAData()[0];
@@ -59,7 +59,7 @@ export default function Footer() {
   return (
     <footer>
       <div>
-        <CallToAction section={section} />
+        {!hasCTA && <CallToAction section={section} />}
         {links.map((link, index) => (
           <div key={`container-${index}`} className="text-center">
             <a

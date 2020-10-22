@@ -41,6 +41,7 @@ module.exports = ({
         'tailwindcss',
         'storybook',
       ],
+      hasCTA: false,
     },
     plugins: [
       mdx && {

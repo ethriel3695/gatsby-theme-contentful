@@ -14,6 +14,7 @@ export const useSiteMetadata = () => {
           isAuthApp
           newsletterTitle
           hasNotifications
+          hasCTA
         }
       }
     }

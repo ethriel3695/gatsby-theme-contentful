@@ -8,7 +8,6 @@ import ArticleContainer from './Post/ArticleContainer';
 
 export default function WidgetHandler({ pageContext, page }) {
   let PageComponent = null;
-  console.log(page.pageType);
   switch (page.pageType) {
     case 'Landing':
       PageComponent = <Landing pageContext={pageContext} page={page} />;
