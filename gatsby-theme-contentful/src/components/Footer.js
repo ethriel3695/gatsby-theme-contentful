@@ -59,7 +59,7 @@ export default function Footer() {
   return (
     <footer>
       <div>
-        {!hasCTA && <CallToAction section={section} />}
+        {hasCTA && <CallToAction section={section} />}
         {links.map((link, index) => (
           <div key={`container-${index}`} className="text-center">
             <a
