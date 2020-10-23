@@ -38,9 +38,9 @@ export default function PostContainer({ data, frontmatter }) {
             />
           ) : null}
           <h1 className="text-center">{title}</h1>
-          <div className="text-md text-center">
+          {/* <div className="text-md text-center">
             <span>{date}</span>
-          </div>
+          </div> */}
         </header>
         <div className="text-left container">
           <MDXProvider components={components}>
