@@ -10,54 +10,15 @@ import NavItem from '../Menu/NavItem';
 import { useSlugList } from '../../hooks/slugList';
 import { buildNav } from '../../utils/buildNav';
 
-const isBrowser = typeof window !== 'undefined';
-
 const Header = ({
   isAuthenticated = false,
   logout = false,
-  login = null,
-  newsletter = undefined,
+  loginWithRedirect = null,
+  user = {},
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const {
-    loginDesc,
-    title,
-    isAuthApp,
-    newsletterTitle,
-    hasNotifications,
-  } = useSiteMetadata();
-
-  let deferredPrompt;
-  if (isBrowser) {
-    window.addEventListener('beforeinstallprompt', event => {
-      deferredPrompt = event;
-    });
-  }
-
-  // const { prompt } = useIsIOS();
-
-  // const handleInstallEvent = () => {
-  //   if (deferredPrompt) {
-  //     deferredPrompt.prompt();
-  //     // Wait for the user to respond to the prompt
-  //     deferredPrompt.userChoice.then(choiceResult => {
-  //       if (choiceResult.outcome === 'accepted') {
-  //         console.log('User accepted the install prompt');
-  //       } else {
-  //         console.log('User dismissed the install prompt');
-  //       }
-  //     });
-  //   }
-  // };
-
-  // handleInstallEvent();
-
-  // if (isBrowser && hasNotifications && 'Notification' in window) {
-  //   Notification.requestPermission(function(status) {
-  //     console.log('Notification permission status:', status);
-  //   });
-  // }
+  const { loginDesc, isAuthApp } = useSiteMetadata();
 
   const data = useBrandData();
   const navList = useSlugList();
@@ -94,6 +55,9 @@ const Header = ({
         <Link to="/">{BrandContainer}</Link>
         {(isAuthenticated && isAuthApp) || !isAuthApp ? (
           <div>
+            <div>
+              <span id="hello">Hello, {user && user.name}!</span>{' '}
+            </div>
             <button
               className="sm:hidden"
               onClick={() => setIsOpen(true)}
@@ -118,7 +82,7 @@ const Header = ({
                   activeClassName=""
                   to={'/'}
                   onClick={() => {
-                    logout();
+                    logout({ returnTo: window.location.origin });
                   }}
                 >
                   Logout
@@ -132,7 +96,7 @@ const Header = ({
             activeClassName=""
             to={'/'}
             onClick={() => {
-              login();
+              loginWithRedirect();
             }}
           >
             Login
@@ -143,7 +107,7 @@ const Header = ({
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         navs={navs}
-        login={login}
+        login={loginWithRedirect}
         logout={logout}
         isAuthenticated={isAuthenticated}
         isAuthApp={isAuthApp}

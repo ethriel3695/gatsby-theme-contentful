@@ -28,7 +28,7 @@ const MenuMobile = ({
   navs,
   isOpen,
   setIsOpen,
-  login,
+  loginWithRedirect,
   logout,
   isAuthenticated,
   isAuthApp,
@@ -65,7 +65,7 @@ const MenuMobile = ({
                   activeClassName=""
                   to={'/'}
                   onClick={() => {
-                    logout();
+                    logout({ returnTo: window.location.origin });
                   }}
                 >
                   Logout
@@ -82,7 +82,7 @@ const MenuMobile = ({
             activeClassName=""
             to={'/'}
             onClick={() => {
-              login();
+              loginWithRedirect();
             }}
           >
             Login

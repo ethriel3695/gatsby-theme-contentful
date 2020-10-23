@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import Layout from '../layout';
 import SEO from '../seo';
-import { useAuth0 } from '../../react-auth0-spa';
+import { Error } from '../Interactive/Error';
 
 export default function AuthContainer({
   siteTitle,
@@ -15,20 +16,14 @@ export default function AuthContainer({
   description,
   categories = [],
 }) {
-  const { loading, isAuthenticated, loginWithRedirect, logout } = useAuth0();
-  useEffect(() => {
-    if (loading || isAuthenticated) {
-      return;
-    }
-    const fn = async () => {
-      try {
-        await loginWithRedirect({});
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    fn();
-  }, [loading, isAuthenticated, loginWithRedirect]);
+  const {
+    isLoading,
+    error,
+    isAuthenticated,
+    loginWithRedirect,
+    logout,
+    user,
+  } = useAuth0();
 
   return (
     <Layout
@@ -40,8 +35,12 @@ export default function AuthContainer({
       slugs={slugs}
       isAuthenticated={isAuthenticated}
       logout={logout}
+      loginWithRedirect={loginWithRedirect}
+      isLoading={isLoading}
+      user={user}
     >
       <SEO title={title} description={description} keywords={categories} />
+      {error && <Error message={error.message} />}
       {children}
     </Layout>
   );
