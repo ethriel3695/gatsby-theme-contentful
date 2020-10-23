@@ -3,7 +3,8 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { navigate } from 'gatsby';
 import './src/styles/style.css';
 
-const onRedirectCallback = appState => navigate(appState?.returnTo || '/');
+const onRedirectCallback = appState =>
+  navigate(appState?.returnTo || '/preferences');
 
 export const wrapRootElement = ({ element }) => {
   return (

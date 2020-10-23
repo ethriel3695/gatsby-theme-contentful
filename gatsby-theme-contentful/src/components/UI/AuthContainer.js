@@ -22,7 +22,6 @@ export default function AuthContainer({
     isAuthenticated,
     loginWithRedirect,
     logout,
-    user,
   } = useAuth0();
 
   return (
@@ -37,7 +36,6 @@ export default function AuthContainer({
       logout={logout}
       loginWithRedirect={loginWithRedirect}
       isLoading={isLoading}
-      user={user}
     >
       <SEO title={title} description={description} keywords={categories} />
       {error && <Error message={error.message} />}

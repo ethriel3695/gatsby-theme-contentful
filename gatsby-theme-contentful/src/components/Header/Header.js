@@ -14,7 +14,6 @@ const Header = ({
   isAuthenticated = false,
   logout = false,
   loginWithRedirect = null,
-  user = {},
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -55,9 +54,6 @@ const Header = ({
         <Link to="/">{BrandContainer}</Link>
         {(isAuthenticated && isAuthApp) || !isAuthApp ? (
           <div>
-            <div>
-              <span id="hello">Hello, {user && user.name}!</span>{' '}
-            </div>
             <button
               className="sm:hidden"
               onClick={() => setIsOpen(true)}
