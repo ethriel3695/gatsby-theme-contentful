@@ -27,7 +27,7 @@ module.exports = {
     greeting: ``,
     copyright: `Copyright © 2020 Team Creation`,
     loginDesc: '',
-    isAuthApp: true,
+    isAuthApp: false,
     newsletterTitle: '',
     social: {
       facebook: 'https://www.facebook.com/reuben.ellis.338',

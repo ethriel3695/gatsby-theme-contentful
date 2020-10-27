@@ -12,18 +12,21 @@
     "test:build": "yarn run build && yarn run serve",
     "setup": "node ./scripts/setup.js",
     "blog:setup": "contentful space import --config config.json",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
     "gatsby": "^2.19.12",
-    "gatsby-theme-contentful": "^0.1.20",
+    "gatsby-theme-contentful": "^0.1.30",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "cypress": "^5.4.0",
     "dotenv": "^8.2.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "start-server-and-test": "^1.11.5"
   }
 }
