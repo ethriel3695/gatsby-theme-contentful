@@ -232,10 +232,8 @@ allContentfulPage {
 ```js
 // env.development
 // Auth0 variables required only if isAuthApp set to true in gatsby-config.js
-GATSBY_AUTH0_DOMAIN = domain.auth0.com; // Replace domain with your auth0 domain
-GATSBY_AUTH0_CLIENT_ID = secret_client_id; // This ID can be found after creating an Application within Auth0 within the Application tab
-GATSBY_AUTH0_CALLBACK_URL = `http://localhost:8000/callback`; //Remove the literal string character when replacing the callback url
-GATSBY_AUTH0_REDIRECT_URL = `http://localhost:8000`; //Remove the literal string character when replacing the callback url
+AUTH0_DOMAIN = domain.auth0.com; // Replace domain with your auth0 domain
+AUTH0_CLIENT_ID = secret_client_id; // This ID can be found after creating an Application within Auth0 within the Application tab
 
 // Google Maps variables required only if you want to use the map
 GATSBY_GOOGLE_MAPS_API_KEY = `Google maps api key`;
@@ -247,12 +245,10 @@ GATSBY_GOOGLE_MAP_DESC = `Description of map marker`;
 GATSBY_GOOGLE_CALENDAR_URL = `https://calendar.google.com/calendar/embed?src=[emailTextBefore@symbol]%40gmail.com&ctz=America%2FBoise`;
 
 // Contentful credentials if you want to use contentful
-GATSBY_CONTENTFUL_SPACEID = `space id from contentful`;
-GATSBY_CONTENTFUL_API = `special token from contentful`;
-
-GATSBY_FORM_API = `URL for submitting form contents REST API`;
-GATSBY_FORM_GET_API = `URL for getting form contents REST API`;
-GATSBY_GOOGLE_ANALYTICS_ID = `Google Analytics ID`;
+CONTENTFUL_SPACE_ID = `space id from contentful`;
+CONTENTFUL_MANAGEMENT_TOKEN = `management token from contentful`;
+CONTENTFUL_ACCESS_TOKEN = `special token from contentful`;
+GOOGLE_ANALYTICS_ID = `Google Analytics ID`;
 ```
 
 ```jsx

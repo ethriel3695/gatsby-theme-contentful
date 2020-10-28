@@ -107,15 +107,15 @@ module.exports = ({
       contentful && {
         resolve: 'gatsby-source-contentful',
         options: {
-          spaceId: process.env.GATSBY_CONTENTFUL_SPACEID,
-          accessToken: process.env.GATSBY_CONTENTFUL_API,
+          spaceId: process.env.CONTENTFUL_SPACE_ID,
+          accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
         },
       },
       {
         resolve: `gatsby-plugin-gtag`,
         options: {
           // your google analytics tracking id
-          trackingId: process.env.GATSBY_GOOGLE_ANALYTICS_ID,
+          trackingId: process.env.GOOGLE_ANALYTICS_ID,
           // Puts tracking script in the head instead of the body
           head: false,
           // enable ip anonymization
