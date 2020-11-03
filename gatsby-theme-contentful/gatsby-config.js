@@ -1,7 +1,4 @@
-const path = require('path');
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+require('dotenv').config();
 
 module.exports = ({
   contentPath = 'content/post',
@@ -150,7 +147,6 @@ module.exports = ({
           background_color: `#325DA7`,
           theme_color: `#325DA7`,
           display: `standalone`,
-          scope: '/',
           crossOrigin: `use-credentials`,
           // theme_color_in_head: false
         },

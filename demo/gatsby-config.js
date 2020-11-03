@@ -14,7 +14,6 @@ module.exports = {
         background_color: `#2C5282`,
         theme_color: `#2C5282`,
         display: `standalone`,
-        scope: '/',
         crossOrigin: `use-credentials`,
         // theme_color_in_head: false
       },
@@ -27,7 +26,7 @@ module.exports = {
     greeting: ``,
     copyright: `Copyright © 2020 Team Creation`,
     loginDesc: '',
-    isAuthApp: false,
+    isAuthApp: true,
     newsletterTitle: '',
     social: {
       facebook: 'https://www.facebook.com/reuben.ellis.338',
@@ -39,5 +38,6 @@ module.exports = {
     externalLinks: [{ label: '', link: '' }],
     hasNotifications: false,
     categories: ['placeholder'],
+    hasCTA: false,
   },
 };
