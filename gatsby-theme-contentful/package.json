@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/ethriel3695/gatsby-theme-contentful.git"
   },
-  "version": "0.1.31",
+  "version": "0.1.32",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -43,7 +43,6 @@
     "autoprefixer": "^9.7.6",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
-    "dotenv": "^8.2.0",
     "framer-motion": "^1.10.3",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-emotion": "^4.1.16",

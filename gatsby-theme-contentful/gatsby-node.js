@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require(`path`);
 const mkdirp = require(`mkdirp`);
 const Debug = require(`debug`);
-require('dotenv').config();
 
 const debug = Debug(`gatsby-theme-contentful`);
 
@@ -213,9 +212,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             use: [loaders.js()],
           },
         ],
-      },
-      node: {
-        fs: 'empty',
       },
     });
   }

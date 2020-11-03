@@ -1,4 +1,7 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 module.exports = ({
   contentPath = 'content/post',
@@ -104,15 +107,15 @@ module.exports = ({
       contentful && {
         resolve: 'gatsby-source-contentful',
         options: {
-          spaceId: process.env.CONTENTFUL_SPACE_ID,
-          accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+          spaceId: process.env.GATSBY_CONTENTFUL_SPACEID,
+          accessToken: process.env.GATSBY_CONTENTFUL_API,
         },
       },
       {
         resolve: `gatsby-plugin-gtag`,
         options: {
           // your google analytics tracking id
-          trackingId: process.env.GOOGLE_ANALYTICS_ID,
+          trackingId: process.env.GATSBY_GOOGLE_ANALYTICS_ID,
           // Puts tracking script in the head instead of the body
           head: false,
           // enable ip anonymization
