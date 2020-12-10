@@ -5,8 +5,12 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 export const HeroSection = ({ section }) => {
   return (
     <div key={'section'}>
-      <div className="max-w-full">
-        {section.file && <Image fluid={section.file.fluid} />}
+      <div className="">
+        <div className="w-full">
+          {section.file && (
+            <Image style={{ maxHeight: '600px' }} fluid={section.file.fluid} />
+          )}
+        </div>
       </div>
       <div className="container">
         <h2 className="py-8" key={`${section.title}`}>
