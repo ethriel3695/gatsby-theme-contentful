@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/ethriel3695/gatsby-theme-contentful.git"
   },
-  "version": "0.1.35",
+  "version": "0.1.36",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
