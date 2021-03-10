@@ -115,6 +115,11 @@ ol {
     width: 4rem;
 }
 
+.hero-text {
+    @apply text-white;
+    text-shadow: 2px 2px #4e4e4e;
+}
+
 @tailwind utilities;
 
 .container {

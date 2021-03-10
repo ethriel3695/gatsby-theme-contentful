@@ -69,6 +69,7 @@ export const query = graphql`
               subHeader
             }
             file {
+              title
               description
               fluid(maxWidth: 1904, quality: 100) {
                 ...GatsbyContentfulFluid_noBase64

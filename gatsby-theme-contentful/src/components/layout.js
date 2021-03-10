@@ -9,13 +9,10 @@ const Layout = ({ children, ...props }) => {
     return <Loading />;
   }
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="min-h-screen">
       <Header {...props} />
       <main className="flex-grow">{children}</main>
-      <hr
-        className="mt-12 border-top-2;
-"
-      />
+      <hr className="mt-12 border-top-2 border-solid border-gray-500" />
       <Footer {...props} />
     </div>
   );

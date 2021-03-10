@@ -49,7 +49,14 @@ const Header = ({
     brandLogo = false;
   }
   return (
-    <div className="container pt-6 pb-6 md:pt-6" style={{ maxHeight: '120px' }}>
+    <div
+      className="container pt-6 pb-6 md:pt-6 sticky"
+      style={{
+        maxHeight: '120px',
+        zIndex: 1000,
+        // borderBottom: '1px solid #000',
+      }}
+    >
       <div className="flex justify-between items-center">
         <Link to="/">{BrandContainer}</Link>
         {(isAuthenticated && isAuthApp) || !isAuthApp ? (

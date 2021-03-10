@@ -10,8 +10,13 @@ export const SectionLayout = ({
 }) => {
   const { title, description, subHeader, caption } = section;
   return (
-    <div className={isContainer ? `container ${className}` : ` ${className}`}>
+    <div
+      className={
+        isContainer ? `container ${className} mt-10` : ` ${className} mt-10`
+      }
+    >
       <h3>{title}</h3>
+      <hr className="mb-5 border-top-2 border-solid border-gray-500" />
       {description && (
         <div className="text-lg text-gray-800 mb-2 text-left">
           {documentToReactComponents(description.json, {
