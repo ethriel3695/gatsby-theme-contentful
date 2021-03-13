@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/style.css';
+import '../styles/global.css';
 import Header from './Header/Header';
 import Footer from './Footer';
 import { Loading } from './Interactive/Loading';

@@ -18,13 +18,14 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "gatsby": "^2.19.12",
-    "gatsby-theme-contentful": "^0.1.32",
+    "gatsby": "^3.0.4",
+    "gatsby-theme-contentful": "^0.1.36",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "cypress": "^5.4.0",
+    "documentation": "^13.1.1",
     "dotenv": "^8.2.0",
     "prettier": "^1.19.1",
     "start-server-and-test": "^1.11.5"

@@ -54,7 +54,7 @@ export const query = graphql`
           ... on ContentfulSection {
             title
             description {
-              json
+              raw
             }
             subHeader {
               subHeader
@@ -63,7 +63,7 @@ export const query = graphql`
           ... on ContentfulHero {
             title
             description {
-              json
+              raw
             }
             subHeader {
               subHeader
@@ -79,7 +79,7 @@ export const query = graphql`
           ... on ContentfulGallery {
             title
             description {
-              json
+              raw
             }
             subHeader {
               subHeader
@@ -100,7 +100,7 @@ export const query = graphql`
           ... on ContentfulProducts {
             title
             description {
-              json
+              raw
             }
             subHeader {
               subHeader
@@ -123,7 +123,7 @@ export const query = graphql`
           ... on ContentfulMultipleCallToAction {
             title
             description {
-              json
+              raw
             }
             subHeader {
               subHeader

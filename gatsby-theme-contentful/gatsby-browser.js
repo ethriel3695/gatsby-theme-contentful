@@ -1,7 +1,7 @@
 import React from 'react';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { navigate } from 'gatsby';
-import './src/styles/style.css';
+import './src/styles/global.css';
 
 const onRedirectCallback = appState =>
   navigate(appState?.returnTo || '/preferences');

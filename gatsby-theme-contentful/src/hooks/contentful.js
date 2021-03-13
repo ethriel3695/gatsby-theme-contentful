@@ -7,7 +7,7 @@ export const useContentful = () => {
         nodes {
           title
           description {
-            json
+            raw
           }
           subHeader {
             subHeader

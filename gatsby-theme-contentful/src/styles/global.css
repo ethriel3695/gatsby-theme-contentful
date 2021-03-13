@@ -76,7 +76,8 @@ ol {
 @tailwind components;
 
 .bg-primary {
-    @apply text-white bg-blue-700;
+    @apply text-white;
+    @apply bg-blue-700;
 }
 
 .bg-primary:hover {
@@ -84,11 +85,11 @@ ol {
 }
 
 .text-primary {
-    @apply text-blue-700 !important;;
+    @apply text-blue-700;
 }
 
 .text-primary:hover {
-    @apply text-blue-800 !important;
+    @apply text-blue-800;
 }
 
 .border-primary {
@@ -102,13 +103,13 @@ ol {
 }
 
 .border-primary-active {
-    @apply border-blue-700 !important;
+    @apply border-blue-700;
 
-    @apply text-gray-900 !important;
+    @apply text-gray-900;
 }
 
 .swiper-pagination-bullet {
-    @apply .bg-white;
+    @apply bg-white;
 }
 
 .header-logo-size {
@@ -123,22 +124,25 @@ ol {
 @tailwind utilities;
 
 .container {
-    @apply .max-w-screen-xl .mx-auto .px-4;
+    @apply max-w-screen-lg; 
+    @apply mx-auto; 
+    @apply px-4;
 }
 
 @screen md {
     .container {
-        @apply .px-6;
+        @apply px-6;
     }
 
     .swiper-pagination-bullet {
-        @apply .w-3 .h-3;
+        @apply w-3;
+        @apply h-3;
     }
 }
 
 @screen lg {
     .container {
-        @apply .px-8;
+        @apply px-8;
     }
 }
 /* purgecss end ignore */

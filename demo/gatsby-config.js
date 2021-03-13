@@ -20,13 +20,13 @@ module.exports = {
     },
   ],
   siteMetadata: {
-    title: `My Path`,
-    author: `Team Creation`,
+    title: `Healthline`,
+    author: `Event Horizon`,
     description: `Welcome to a Different World`,
     greeting: ``,
-    copyright: `Copyright © 2020 Team Creation`,
+    copyright: `Copyright © 2021 Event Horizon`,
     loginDesc: '',
-    isAuthApp: true,
+    isAuthApp: false,
     newsletterTitle: '',
     social: {
       facebook: 'https://www.facebook.com/reuben.ellis.338',
