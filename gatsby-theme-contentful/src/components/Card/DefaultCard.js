@@ -12,7 +12,11 @@ const DefaultCard = ({ title, caption, file }) => {
       className="col-span-12 lg:col-span-1 p-3 md:p-6 mx-3 shadow-lg rounded-md overflow-hidden no-underline"
     >
       {file && <CardImage fluid={file.fluid} />}
-      {caption && <div className="text-black mt-3 text-center">{caption}</div>}
+      {caption && (
+        <div className="text-black mt-3 text-center text-primary">
+          {caption}
+        </div>
+      )}
     </a>
   );
 };

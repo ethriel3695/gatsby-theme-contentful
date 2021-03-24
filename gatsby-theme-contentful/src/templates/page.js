@@ -59,6 +59,9 @@ export const query = graphql`
             subHeader {
               subHeader
             }
+            internal {
+              type
+            }
           }
           ... on ContentfulHero {
             title
@@ -74,6 +77,9 @@ export const query = graphql`
               fluid(maxWidth: 1904, quality: 100) {
                 ...GatsbyContentfulFluid_noBase64
               }
+            }
+            internal {
+              type
             }
           }
           ... on ContentfulGallery {
@@ -95,6 +101,9 @@ export const query = graphql`
                   ...GatsbyContentfulFluid_noBase64
                 }
               }
+            }
+            internal {
+              type
             }
           }
           ... on ContentfulProducts {
@@ -119,6 +128,9 @@ export const query = graphql`
                 }
               }
             }
+            internal {
+              type
+            }
           }
           ... on ContentfulMultipleCallToAction {
             title
@@ -136,6 +148,9 @@ export const query = graphql`
               buttonText
               externalLink
               slug
+            }
+            internal {
+              type
             }
           }
         }
