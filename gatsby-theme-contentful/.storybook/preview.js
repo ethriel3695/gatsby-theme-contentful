@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 // import { GlobalStyle } from '../src/shared/global';
 // We will address this later.
-import '../src/styles/style.css';
+import '../src/styles/global.css';
 import React from 'react';
 // Add viewport addon for mobile responsive development.
 import { addParameters, configure } from '@storybook/react';
