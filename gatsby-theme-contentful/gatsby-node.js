@@ -3,8 +3,6 @@ const path = require(`path`);
 const mkdirp = require(`mkdirp`);
 const Debug = require(`debug`);
 
-const debug = Debug(`gatsby-theme-contentful`);
-
 // These are customizable theme options we only need to check once
 let basePath;
 let contentPath;
@@ -98,14 +96,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         extension
         publicURL
       }
-      allContentfulPage {
-        nodes {
-          id
-          title
-          pageType
-          slug
-        }
-      }
     }
   `);
 
@@ -121,7 +111,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     newsletter,
   } = result.data;
   const posts = result.data.allMdx.nodes;
-  const pages = result.data.allContentfulPage.nodes;
 
   const {
     title: siteTitle,
@@ -133,32 +122,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     greeting: siteGreeting,
   } = siteMetadata;
   const brand = brandLogo;
-
-  // Generate a page from each Contentful "Page" Content Model
-  pages.forEach(page => {
-    const slug = page.slug;
-    if (!slug || slug === '/placeholder-content') {
-      return false;
-    }
-    createPage({
-      path: slug,
-      component: require.resolve(PageTemplate),
-      context: {
-        siteTitle,
-        siteDescription,
-        siteGreeting,
-        copyrightMessage,
-        loginOption,
-        socialLinks,
-        brand,
-        newsletter,
-        isAuthApp,
-        slug,
-        page,
-        pageId: page.id,
-      },
-    });
-  });
 
   // Create a page for each Article from "mdx"
   posts.forEach(post => {
@@ -205,11 +168,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
           {
             test: /auth0-spa-js/,
             use: loaders.null(),
-          },
-          {
-            test: /\.js$/,
-            include: path.dirname(require.resolve('gatsby-theme-contentful')),
-            use: [loaders.js()],
           },
         ],
       },
