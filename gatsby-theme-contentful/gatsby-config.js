@@ -88,6 +88,7 @@ module.exports = ({
           name: assetPath,
         },
       },
+      `gatsby-plugin-netlify-cms`,
       {
         resolve: 'gatsby-transformer-json',
         options: {

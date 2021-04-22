@@ -10,7 +10,7 @@ let assetPath;
 
 // These templates are simply data-fetching wrappers that import components
 const PostTemplate = require.resolve(`./src/templates/post`);
-const PageTemplate = require.resolve(`./src/templates/page.js`);
+// const PageTemplate = require.resolve(`./src/templates/page.js`);
 
 // Verify the data directory exists
 exports.onPreBootstrap = ({ store, reporter }, options) => {
@@ -33,7 +33,7 @@ exports.onPreBootstrap = ({ store, reporter }, options) => {
   ];
 
   dirs.forEach(dir => {
-    debug(`Initializing ${dir} directory`);
+    Debug.debug(`Initializing ${dir} directory`);
     if (!fs.existsSync(dir)) {
       mkdirp.sync(dir);
     }

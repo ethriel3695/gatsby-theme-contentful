@@ -1,14 +1,6 @@
 export const buildNav = navList => {
   let navs = [];
   let navObject = null;
-  navList.allContentfulPage.nodes.map(node => {
-    navObject = {
-      route: node.slug,
-      label: node.title,
-    };
-    navs.push(navObject);
-    return true;
-  });
   navList.allMdx.nodes.map(node => {
     navObject = {
       route: node.frontmatter.slug,

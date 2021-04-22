@@ -21,21 +21,6 @@ export const useArticleData = () => {
           }
         }
       }
-      allContentfulPage(
-        filter: { slug: { regex: "/blog//" } }
-        sort: { order: ASC, fields: [slug] }
-      ) {
-        nodes {
-          title
-          slug
-          description {
-            description
-          }
-          createdAt(formatString: "MMMM Do, YYYY")
-          author
-          categories
-        }
-      }
     }
   `);
   return data;

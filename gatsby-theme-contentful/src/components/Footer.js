@@ -10,14 +10,13 @@ import {
 import { useExternalLinks } from '../hooks/externalLinks';
 import { useSiteMetadata } from '../hooks/siteMetadata';
 import { useSocialInfo } from '../hooks/socialInfo';
-import { useCTAData } from '../hooks/ctaData';
-import { CallToAction } from '../components/Section/CallToAction';
+// import { CallToAction } from '../components/Section/CallToAction';
 
 export default function Footer() {
   const { copyright, hasCTA } = useSiteMetadata();
   const { email, facebook, twitter, github, instagram } = useSocialInfo();
   const links = useExternalLinks();
-  const section = useCTAData()[0];
+  // const section = useCTAData()[0];
   let social = [];
   let SocialContainer = null;
   if (facebook !== '') {
@@ -59,7 +58,7 @@ export default function Footer() {
   return (
     <footer>
       <div>
-        {hasCTA && <CallToAction section={section} />}
+        {/*hasCTA && <CallToAction section={section} />*/}
         {links.map((link, index) => (
           <div key={`container-${index}`} className="text-center">
             <a

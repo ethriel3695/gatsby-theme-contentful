@@ -2,8 +2,7 @@
   "private": true,
   "workspaces": [
     "gatsby-theme-contentful",
-    "demo",
-    "demo-2"
+    "demo"
   ],
   "dependencies": {},
   "devDependencies": {},
