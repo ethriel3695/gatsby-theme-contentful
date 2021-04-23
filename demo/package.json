@@ -17,6 +17,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "engines" : { "node" : ">=12.13.0" },
   "dependencies": {
     "gatsby": "^3.0.4",
     "gatsby-theme-contentful": "^0.2.2",
