@@ -59,21 +59,20 @@ module.exports = ({
               },
             },
             { resolve: `gatsby-remark-copy-linked-files` },
-            { resolve: `gatsby-remark-numbered-footnotes` },
             { resolve: `gatsby-remark-smartypants` },
           ],
           remarkPlugins: [require(`remark-slug`)],
         },
       },
       'gatsby-plugin-postcss',
-      {
-        resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
-        options: {
-          analyzerPort: 8888,
-          analyzerMode: 'server',
-          defaultSizes: 'gzip',
-        },
-      },
+      // {
+      //   resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      //   options: {
+      //     analyzerPort: 8888,
+      //     analyzerMode: 'server',
+      //     defaultSizes: 'gzip',
+      //   },
+      // },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
@@ -103,18 +102,18 @@ module.exports = ({
           defaultQuality: 75,
         },
       },
-      {
-        resolve: `gatsby-plugin-gtag`,
-        options: {
-          // your google analytics tracking id
-          trackingId: process.env.GOOGLE_ANALYTICS_ID,
-          // Puts tracking script in the head instead of the body
-          head: false,
-          // enable ip anonymization
-          anonymize: true,
-          defer: true,
-        },
-      },
+      // {
+      //   resolve: `gatsby-plugin-gtag`,
+      //   options: {
+      //     // your google analytics tracking id
+      //     trackingId: process.env.GOOGLE_ANALYTICS_ID,
+      //     // Puts tracking script in the head instead of the body
+      //     head: false,
+      //     // enable ip anonymization
+      //     anonymize: true,
+      //     defer: true,
+      //   },
+      // },
       'gatsby-transformer-sharp',
       'gatsby-plugin-react-helmet',
       {
