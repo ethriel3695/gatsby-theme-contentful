@@ -15,7 +15,6 @@ module.exports = {
         theme_color: `#2C5282`,
         display: `standalone`,
         crossOrigin: `use-credentials`,
-        // theme_color_in_head: false
       },
     },
   ],
