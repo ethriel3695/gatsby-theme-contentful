@@ -83,7 +83,7 @@
     "react-switch": "^6.0.0",
     "react-transition-group": "^4.4.1",
     "remark-slug": "^6.0.0",
-    "swiper": "^6.5.0",
+    "swiper": "^6.5.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
   "keywords": [
