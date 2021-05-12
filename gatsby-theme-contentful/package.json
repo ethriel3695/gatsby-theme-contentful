@@ -71,7 +71,7 @@
     "gatsby-transformer-json": "^3.0.0",
     "gatsby-transformer-remark": "^3.0.0",
     "gatsby-transformer-sharp": "^3.0.0",
-    "postcss": "^7",
+    "postcss": "^8",
     "prism-react-renderer": "^1.2.0",
     "react-google-maps": "^9.4.5",
     "react-headroom": "^3.1.0",
